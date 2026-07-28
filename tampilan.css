@@ -1409,7 +1409,7 @@ body.cursor-fx *{
 }
 
 .cursor-toggle.active{
-    background:var(--accent2);
+    background: #2FA37D;
     color:#fff;
 }
 
