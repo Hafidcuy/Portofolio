@@ -1389,8 +1389,8 @@ body.cursor-fx *{
     left:30px;
     width:52px;
     height:52px;
-    background:var(--card);
-    color:var(--primary);
+    background:var(--primary);
+    color:var(--white);
     border:1px solid var(--border);
     border-radius:6px;
     clip-path:polygon(0 0,calc(100% - 12px) 0,100% 100%,12px 100%);
@@ -1409,7 +1409,7 @@ body.cursor-fx *{
 }
 
 .cursor-toggle.active{
-    background:var(--primary);
+    background: black;
     color:#fff;
 }
 
