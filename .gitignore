@@ -1,0 +1,4 @@
+node_modules/
+portfolio.db
+uploads/*
+!uploads/.gitkeep
