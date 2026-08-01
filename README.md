@@ -78,9 +78,3 @@ cukup jalankan `npm start`.
 Karena datanya sekarang di file `portfolio.db`, cadangkan secara berkala dengan cara:
 - Salin file `portfolio.db` ke tempat lain, **atau**
 - Pakai fitur "Unduh Data (JSON)" di menu Pengaturan pada admin panel.
-
-## Deploy ke Hosting
-
-Untuk online-kan (misal ke Railway, Render, atau VPS), pastikan platform tersebut mendukung
-proses Node.js yang berjalan terus-menerus (bukan hosting statis seperti GitHub Pages/Vercel static,
-karena butuh server yang aktif untuk API dan penyimpanan file `portfolio.db` & `uploads/`).
