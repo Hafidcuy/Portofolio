@@ -1,0 +1,21 @@
+{
+  "name": "portofolio-supabase",
+  "version": "1.0.0",
+  "description": "Portofolio + Admin Panel dengan database Supabase, siap deploy ke Vercel",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.4",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "multer": "^1.4.5-lts.1"
+  }
+}
