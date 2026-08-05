@@ -1002,7 +1002,7 @@ footer{
     padding:30px;
     text-align:center;
     background:var(--text);
-    color:var(--bg);
+    color: white;
     font-family:var(--mono);
     font-size:14px;
 }
