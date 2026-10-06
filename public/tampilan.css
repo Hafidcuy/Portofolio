@@ -2138,3 +2138,125 @@ body{
         right:14px;
     }
 }
+
+/* ===========================
+   POLESAN TAMPILAN HP
+   =========================== */
+
+@media (max-width:768px){
+
+    /* Napas antar bagian lebih ringkas supaya halaman
+       tidak terasa terlalu panjang saat digeser di HP */
+    section{
+        padding:64px 6%;
+    }
+
+    .sub-title{
+        font-size:15.5px;
+        line-height:1.75;
+    }
+
+    /* Kartu info "Tentang" → baris ringkas: ikon di kiri,
+       judul & isi menumpuk rapi di kanannya */
+    .info{
+        gap:14px;
+        margin-top:32px;
+    }
+
+    .card{
+        display:grid;
+        grid-template-columns:auto 1fr;
+        grid-template-areas:
+            "ikon judul"
+            "ikon isi";
+        align-items:center;
+        column-gap:16px;
+        row-gap:2px;
+        text-align:left;
+        padding:16px 18px;
+    }
+
+    .card i{
+        grid-area:ikon;
+        align-self:center;
+        width:54px;
+        height:54px;
+        margin:0;
+        font-size:22px;
+        border-radius:15px;
+    }
+
+    .card h3{
+        grid-area:judul;
+        margin:0;
+        font-size:18px;
+    }
+
+    .card p{
+        grid-area:isi;
+        font-size:15px;
+        line-height:1.5;
+    }
+
+    /* Hero: sedikit ruang di bawah nav agar foto tidak
+       menempel, dan ukuran foto lebih ringkas */
+    .hero{
+        padding-top:26px;
+        gap:34px;
+    }
+
+    .profile-card{
+        width:min(258px,72vw);
+        height:auto;
+        aspect-ratio:1/1;
+    }
+
+    .profile-card img{
+        width:min(200px,58vw);
+    }
+
+    /* Dropdown menu lebih pekat agar teks tetap terbaca
+       saat menimpa foto/kartu */
+    #navMenu{
+        width:240px;
+        padding:20px;
+        gap:14px;
+        background:rgba(255,255,255,.97);
+    }
+
+    /* Kartu kontak: ruang untuk teks diperbesar supaya
+       email/URL tidak terpotong di tengah kata */
+    .contact-card{
+        margin-top:34px;
+        gap:12px;
+    }
+
+    .contact-item{
+        gap:13px;
+        padding:14px 15px;
+    }
+
+    .contact-icon{
+        width:46px;
+        height:46px;
+        min-width:46px;
+        font-size:19px;
+        border-radius:12px;
+    }
+
+    .contact-value{
+        font-size:15px;
+        word-break:break-word;
+        overflow-wrap:anywhere;
+    }
+
+    .contact-go{
+        font-size:14px;
+    }
+
+    .contact-note{
+        margin-top:22px;
+        font-size:13.5px;
+        text-align:left;
+    }
+}

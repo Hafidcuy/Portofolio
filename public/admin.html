@@ -464,11 +464,23 @@ body{
 
     .side-nav::-webkit-scrollbar{ display:none; }
 
+    /* Petunjuk bahwa menu masih bisa digeser ke kanan */
+    .side-nav{
+        -webkit-mask-image:linear-gradient(to right,#000 calc(100% - 34px),rgba(0,0,0,.12));
+        mask-image:linear-gradient(to right,#000 calc(100% - 34px),rgba(0,0,0,.12));
+    }
+
+    .side-nav.at-end{
+        -webkit-mask-image:none;
+        mask-image:none;
+    }
+
     .nav-item{
         flex:0 0 auto;
         white-space:nowrap;
         padding:11px 12px;
         font-size:14px;
+        min-height:42px;
     }
 
     .side-bottom{
@@ -1020,6 +1032,29 @@ if(getToken()){
 
 const navItems = document.querySelectorAll(".nav-item");
 const panels = document.querySelectorAll(".panel");
+const sideNav = document.querySelector(".side-nav");
+
+/* Menu HP: bawa tab aktif selalu terlihat & tandai
+   sisa geseran agar pengguna tahu masih ada menu lain */
+function focusNavItem(item){
+    if(!sideNav || sideNav.scrollWidth <= sideNav.clientWidth) return;
+    const target = item.offsetLeft - (sideNav.clientWidth - item.offsetWidth)/2;
+    sideNav.scrollTo({ left:Math.max(0,target), behavior:"smooth" });
+}
+
+function updateNavEnd(){
+    if(!sideNav) return;
+    const atEnd = sideNav.scrollLeft + sideNav.clientWidth >= sideNav.scrollWidth - 2;
+    sideNav.classList.toggle("at-end", atEnd);
+}
+
+if(sideNav){
+    sideNav.addEventListener("scroll", updateNavEnd, {passive:true});
+    window.addEventListener("resize", updateNavEnd);
+    updateNavEnd();
+    const active = document.querySelector(".nav-item.active");
+    if(active) requestAnimationFrame(()=>{ focusNavItem(active); updateNavEnd(); });
+}
 
 navItems.forEach(item=>{
 
@@ -1030,6 +1065,8 @@ navItems.forEach(item=>{
 
         item.classList.add("active");
         document.getElementById(item.dataset.target).classList.add("active");
+        focusNavItem(item);
+        setTimeout(updateNavEnd, 350);
 
     });
 
