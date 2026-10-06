@@ -2260,3 +2260,101 @@ body{
         text-align:left;
     }
 }
+
+/* ===========================
+   PERAPIAN AKHIR HP
+   =========================== */
+
+@media (max-width:768px){
+
+    /* Judul hero & subjudul: kata seimbang antar baris,
+       supaya tidak ada kata tunggal ("Lunak") di baris akhir */
+    .left h1,
+    .left h2{
+        text-wrap:balance;
+    }
+
+    /* Section title juga balance agar tidak nyangkut 1 kata */
+    .title{
+        text-wrap:balance;
+    }
+
+    /* Footer: satu kolom, rapat & rata tengah di HP */
+    .footer-inner{
+        flex-direction:column;
+        align-items:center;
+        text-align:center;
+        gap:10px;
+        margin-bottom:20px;
+    }
+
+    .footer-brand h2{
+        font-size:23px;
+    }
+
+    .footer-brand p{
+        margin-top:2px;
+    }
+
+    .footer-links{
+        justify-content:center;
+        gap:0 8px;
+        width:100%;
+    }
+
+    .footer-links a{
+        font-size:11px;
+        letter-spacing:.5px;
+    }
+
+    .footer-social{
+        justify-content:center;
+    }
+
+    .footer-copy{
+        text-align:center;
+        padding:0 6%;
+    }
+
+    /* Tombol Code/Live di kartu project: target sentuh
+       minimal 44px tinggi */
+    .project-card .button-github a{
+        min-height:44px;
+        display:inline-flex;
+        align-items:center;
+        gap:8px;
+    }
+}
+
+/* Layar sangat sempit (320–420px): badge tanggal & subjudul
+   hero disesuaikan supaya muat satu baris */
+@media (max-width:420px){
+
+    .left h2{
+        font-size:16.5px;
+    }
+
+    .timeline-content{
+        padding:18px;
+    }
+
+    .timeline-content .year{
+        font-size:11.5px;
+        padding:4px 10px;
+        letter-spacing:0;
+    }
+
+    .timeline-item{
+        gap:16px;
+    }
+
+    /* Footer: padding samping dikecilkan agar nav muat 1 baris */
+    footer{
+        padding-left:4%;
+        padding-right:4%;
+    }
+
+    .footer-links{
+        gap:0 6px;
+    }
+}
