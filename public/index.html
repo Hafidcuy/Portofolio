@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Pelajar</title>
+
+    <link rel="stylesheet" href="tampilan.css">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome (CDN publik) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav>
+
+    <div class="logo">
+        <img src="logo/foxnime_outline_transparent.png" alt="Logo" class="logo-light">
+        <img src="logo/foxnime_outline_white_transparent.png" alt="Logo" class="logo-dark">
+        <h2>Portofolio<span>.</span></h2>
+    </div>
+
+    <ul id="navMenu">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">Tentang</a></li>
+        <li><a href="#skill">Skill</a></li>
+        <li><a href="#project">Project</a></li>
+        <li><a href="#certificate">Sertifikat</a></li>
+        <li><a href="#experience">Pengalaman</a></li>
+        <li><a href="#contact">Kontak</a></li>
+
+    </ul>
+
+    <div class="nav-action">
+
+        <button id="darkBtn">
+            <img id="themeIcon" src="logo/moon.png" alt="Dark Mode">
+        </button>
+
+        <button class="menu-toggle" id="menuToggle">
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </button>
+
+    </div>
+
+</nav>
+
+<!-- ================= HERO ================= -->
+<div id="home" class="anchor-home" aria-hidden="true"></div>
+<section class="hero">
+
+    <div class="left">
+
+        <span class="hero-badge">
+            <i class="fas fa-circle"></i> SMK Krian 1 Sidoarjo — RPL
+        </span>
+
+        <h3>Halo, Saya</h3>
+
+        <h1>Moch. Hafid Putra R.</h1>
+
+        <h2>Pelajar Rekayasa Perangkat Lunak</h2>
+
+        <p>
+            Saya adalah seorang pelajar yang memiliki minat pada dunia pemrograman,
+            website, IoT, dan desain UI/UX.
+        </p>
+
+        <div class="hero-button">
+
+            <a href="#about" class="btn">
+                <i class="fas fa-user"></i> Tentang Saya
+            </a>
+
+            <a href="#project" class="btn-outline">
+                <i class="fas fa-layer-group"></i> Lihat Project
+            </a>
+
+        </div>
+
+        <div class="hero-social">
+
+            <a href="mailto:tulrama67@gmail.com" target="_blank" rel="noopener" aria-label="Email">
+                <i class="fas fa-envelope"></i>
+            </a>
+
+            <a href="https://www.instagram.com/ramatul_1357/" target="_blank" rel="noopener" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+
+            <a href="https://github.com/Hafidcuy" target="_blank" rel="noopener" aria-label="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="right">
+
+        <div class="profile-card">
+
+            <img src="logo/WhatsApp Image 2026-07-27 at 07.09.20.jpeg" alt="Foto Profil">
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= ABOUT ================= -->
+
+<section class="about" id="about">
+
+    <h2 class="title">Tentang Saya</h2>
+
+    <p class="sub-title">
+
+        Saya adalah seorang pelajar yang memiliki minat pada dunia pemrograman,
+        website, IoT, dan desain UI/UX.
+
+    </p>
+
+    <div class="info">
+
+        <div class="card">
+
+            <i class="fas fa-school"></i>
+
+            <h3>Sekolah</h3>
+
+            <p>SMK Krian 1 Sidoarjo</p>
+
+        </div>
+
+        <div class="card">
+
+            <i class="fas fa-laptop-code"></i>
+
+            <h3>Jurusan</h3>
+
+            <p>Rekayasa Perangkat Lunak</p>
+
+        </div>
+
+        <div class="card">
+
+            <i class="fas fa-location-dot"></i>
+
+            <h3>Alamat</h3>
+
+            <p>Wonoayu, Sidoarjo, Jawa Timur</p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= SKILL ================= -->
+
+<section class="skill" id="skill">
+
+    <h2 class="title">Keahlian</h2>
+
+    <div class="skills">
+
+        <div class="box">
+            <div class="box-header">
+                <div class="box-title">
+                    <i class="fab fa-html5"></i>
+                    <h3>HTML</h3>
+                </div>
+                <span class="skill-badge">Frontend</span>
+            </div>
+            <p class="box-desc">Struktur dan markup halaman web</p>
+            <div class="proficiency">
+                <span>Penguasaan</span>
+                <span class="percent">85%</span>
+            </div>
+            <div class="progress-track">
+                <div class="progress-fill" style="width:85%;"></div>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="box-header">
+                <div class="box-title">
+                    <i class="fab fa-css3-alt"></i>
+                    <h3>CSS</h3>
+                </div>
+                <span class="skill-badge">Frontend</span>
+            </div>
+            <p class="box-desc">Styling, layout, dan animasi web</p>
+            <div class="proficiency">
+                <span>Penguasaan</span>
+                <span class="percent">70%</span>
+            </div>
+            <div class="progress-track">
+                <div class="progress-fill" style="width:70%;"></div>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="box-header">
+                <div class="box-title">
+                    <i class="fab fa-js"></i>
+                    <h3>JavaScript</h3>
+                </div>
+                <span class="skill-badge">Frontend</span>
+            </div>
+            <p class="box-desc">Logika dan interaktivitas website</p>
+            <div class="proficiency">
+                <span>Penguasaan</span>
+                <span class="percent">15%</span>
+            </div>
+            <div class="progress-track">
+                <div class="progress-fill" style="width:15%;"></div>
+            </div>
+        </div>
+        
+    </div>
+
+</section>
+
+<!-- ================= PROJECT ================= -->
+
+<section class="project" id="project">
+
+    <h2 class="title">Project Saya</h2>
+
+    <div class="projects">
+
+        <div class="project-card">
+
+            <div class="project-thumb">
+                <img src="logo/Screenshot (2).png" alt="Tampilan Website Warung">
+            </div>
+
+            <div class="project-body">
+
+                <span class="project-tag">Website</span>
+
+                <h3>Website Warung</h3>
+
+                <p>
+                    Website penjualan makanan dan minuman
+                    menggunakan HTML, CSS, dan JavaScript.
+                </p>
+
+                <div class="button-github">
+                    <a href="https://github.com/Hafidcuy/warungmami" target="_blank" rel="noopener">
+                        <i class="fab fa-github"></i> Code
+                    </a>
+                    <a href="https://warungmami.vercel.app/index.html" target="_blank" rel="noopener">
+                        <i class="fas fa-arrow-up-right-from-square"></i> Live
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="project-card">
+
+            <div class="project-thumb">
+                <img src="logo/Screenshot (4).png" alt="Tampilan Website Perpustakaan">
+            </div>
+
+            <div class="project-body">
+
+                <span class="project-tag">Website</span>
+
+                <h3>Website Perpustakaan</h3>
+
+                <p>
+                    Website katalog buku dan manga dengan fitur pencarian.
+                </p>
+
+                <div class="button-github">
+                    <a href="https://github.com/Hafidcuy/SkaFarm-UI" target="_blank" rel="noopener">
+                        <i class="fab fa-github"></i> Code
+                    </a>
+                    <a href="https://cowoksoftspoken.github.io/SkaFarm-UI/" target="_blank" rel="noopener">
+                        <i class="fas fa-arrow-up-right-from-square"></i> Live
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="project-card">
+
+            <div class="project-thumb">
+                <img src="logo/Screenshot (3).png" alt="Tampilan Website SkaFarm">
+            </div>
+
+            <div class="project-body">
+
+                <span class="project-tag">UI/UX</span>
+
+                <h3>SkaFarm</h3>
+
+                <p>
+                    Website pertanian modern yang berfokus pada UI/UX.
+                </p>
+
+                <div class="button-github">
+                    <a href="https://github.com/Hafidcuy/warungmami" target="_blank" rel="noopener">
+                        <i class="fab fa-github"></i> Code
+                    </a>
+                    <a href="https://warungmami.vercel.app/perpus.html" target="_blank" rel="noopener">
+                        <i class="fas fa-arrow-up-right-from-square"></i> Live
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= CERTIFICATE ================= -->
+
+<section class="certificate" id="certificate">
+
+    <h2 class="title">
+        Sertifikat
+    </h2>
+
+    <div class="projects">
+
+        <a href="https://drive.google.com/drive/folders/1dKyL4GGRzPXDqfMGq3NBSIGQ-H7LrDCl?usp=drive_link" target="_blank" class="project-card">
+
+            <img class="gambar-sertif" src="/logo/{E1E605C0-48E6-4593-9A92-E8D8DD39EC19}.png" alt="">
+
+            <h3>Fitcom</h3>
+
+            <p>
+                Lomba Pemrograman Web
+            </p>
+
+        </a>
+
+    </div>
+
+</section>
+
+<!-- ================= EXPERIENCE ================= -->
+
+<section class="experience" id="experience">
+
+    <h2 class="title">
+        Pengalaman
+    </h2>
+
+    <p class="sub-title">
+        Beberapa pengalaman yang saya miliki selama belajar dan mengembangkan kemampuan di bidang teknologi.
+    </p>
+
+    <div class="timeline">
+
+        <div class="timeline-item">
+
+            <div class="timeline-icon">
+                <i class="fas fa-briefcase"></i>
+            </div>
+
+            <div class="timeline-content">
+
+                <span class="year">
+                    2025
+                </span>
+
+                <h3>
+                    Praktik Kerja Lapangan (PKL)
+                </h3>
+
+                <h4>
+                    UPTD RPH & Pasar Hewan Krian
+                </h4>
+
+                <p>
+                    Membantu proses digitalisasi dengan membuat website profil,
+                    melakukan dokumentasi kegiatan, instalasi aplikasi,
+                    scanning dokumen, dan administrasi.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="timeline-item">
+
+            <div class="timeline-icon">
+                <i class="fas fa-code"></i>
+            </div>
+
+            <div class="timeline-content">
+
+                <span class="year">
+                    2025 - Sekarang
+                </span>
+
+                <h3>
+                    Web Developer
+                </h3>
+
+                <h4>
+                    Project Pribadi
+                </h4>
+
+                <p>
+                    Mengembangkan berbagai website menggunakan HTML, CSS,
+                    JavaScript, PHP, dan MySQL seperti Website Warung,
+                    Website Perpustakaan, serta SkaFarm.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="timeline-item">
+
+            <div class="timeline-icon">
+                <i class="fas fa-microchip"></i>
+            </div>
+
+            <div class="timeline-content">
+
+                <span class="year">
+                    2024-2025
+                </span>
+
+                <h3>
+                    Pengalaman Lapangan
+                </h3>
+
+                <h4>
+                    Osis Skarisa
+                </h4>
+
+                <p>
+                    Aktif Selama Satu Tahun Sebagai Anggota Osis Skarisa
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= CONTACT ================= -->
+
+<section class="contact" id="contact">
+
+    <h2 class="title">Kontak</h2>
+
+    <div class="contact-card">
+
+        <a class="contact-item" href="mailto:tulrama67@gmail.com">
+
+            <span class="contact-icon">
+                <i class="fas fa-envelope"></i>
+            </span>
+
+            <span class="contact-info">
+                <span class="contact-label">Email</span>
+                <span class="contact-value">tulrama67@gmail.com</span>
+            </span>
+
+            <i class="fas fa-arrow-right contact-go"></i>
+
+        </a>
+
+        <a class="contact-item" href="https://www.instagram.com/ramatul_1357/" target="_blank" rel="noopener">
+
+            <span class="contact-icon">
+                <i class="fab fa-instagram"></i>
+            </span>
+
+            <span class="contact-info">
+                <span class="contact-label">Instagram</span>
+                <span class="contact-value">@ramatul_1357</span>
+            </span>
+
+            <i class="fas fa-arrow-right contact-go"></i>
+
+        </a>
+
+        <a class="contact-item" href="https://github.com/Hafidcuy" target="_blank" rel="noopener">
+
+            <span class="contact-icon">
+                <i class="fab fa-github"></i>
+            </span>
+
+            <span class="contact-info">
+                <span class="contact-label">GitHub</span>
+                <span class="contact-value">github.com/Hafidcuy</span>
+            </span>
+
+            <i class="fas fa-arrow-right contact-go"></i>
+
+        </a>
+
+    </div>
+
+    <p class="contact-note">
+        <i class="fas fa-terminal"></i>
+        Terbuka untuk kolaborasi project, magang, dan diskusi seputar web development.
+    </p>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="footer-inner">
+
+        <div class="footer-brand">
+            <h2>Portofolio<span>.</span></h2>
+            <p>Moch. Hafid Putra R. — Pelajar RPL</p>
+        </div>
+
+        <div class="footer-links">
+
+            <a href="#about">Tentang</a>
+            <a href="#skill">Skill</a>
+            <a href="#project">Project</a>
+            <a href="#certificate">Sertifikat</a>
+            <a href="#contact">Kontak</a>
+
+        </div>
+
+        <div class="footer-social">
+
+            <a href="mailto:tulrama67@gmail.com" target="_blank" rel="noopener" aria-label="Email">
+                <i class="fas fa-envelope"></i>
+            </a>
+
+            <a href="https://www.instagram.com/ramatul_1357/" target="_blank" rel="noopener" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+
+            <a href="https://github.com/Hafidcuy" target="_blank" rel="noopener" aria-label="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+
+        </div>
+
+    </div>
+
+    <p class="footer-copy">
+        © 2026 Profile Pelajar | Dibuat dengan menggunakan HTML, CSS &amp; JavaScript
+    </p>
+
+</footer>
+
+<script src="fungsi.js"></script>
+
+</body>
+</html>
