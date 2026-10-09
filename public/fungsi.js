@@ -469,7 +469,13 @@ const navLinks = document.querySelectorAll("#navMenu a");
 
 function updateActiveNav(){
 
-    const scrollPos = window.scrollY + 140;
+    /* Ambang "section aktif" diskalakan terhadap tinggi viewport.
+       Section terakhir (Kontak) berhenti di ±200px saat halaman di-scroll ke
+       dasar, sehingga tidak pernah terlewati ambang tetap 140px — akibatnya
+       menu jadi salah menyorot section sebelumnya (Pengalaman). */
+    const anchor = Math.max(140, window.innerHeight * 0.4);
+
+    const scrollPos = window.scrollY + anchor;
 
     let currentId = "home";
 
@@ -483,6 +489,22 @@ function updateActiveNav(){
 
     });
 
+    /* Safety: saat sudah mencapai dasar halaman, section terakhir dipaksa
+       aktif — apa pun tinggi viewport / panjang footer. */
+    if(window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 40){
+
+        let lastSec = null;
+
+        spySections.forEach(sec=>{
+
+            if(!lastSec || sec.offsetTop > lastSec.offsetTop) lastSec = sec;
+
+        });
+
+        if(lastSec) currentId = lastSec.id;
+
+    }
+
     navLinks.forEach(link=>{
 
         link.classList.toggle(
@@ -494,7 +516,8 @@ function updateActiveNav(){
 
 }
 
-window.addEventListener("scroll", updateActiveNav);
+window.addEventListener("scroll", updateActiveNav, { passive:true });
+window.addEventListener("resize", updateActiveNav);
 window.addEventListener("load", updateActiveNav);
 updateActiveNav();
 
