@@ -469,11 +469,11 @@ const navLinks = document.querySelectorAll("#navMenu a");
 
 function updateActiveNav(){
 
-    /* Ambang "section aktif" diskalakan terhadap tinggi viewport.
-       Section terakhir (Kontak) berhenti di ±200px saat halaman di-scroll ke
-       dasar, sehingga tidak pernah terlewati ambang tetap 140px — akibatnya
-       menu jadi salah menyorot section sebelumnya (Pengalaman). */
-    const anchor = Math.max(140, window.innerHeight * 0.4);
+    /* Ambang "section aktif" = garis tengah layar (50% tinggi viewport).
+       Versi lama memakai ambang tetap 140px sehingga section yang sedang
+       terlihat di layar (mis. Kontak) belum dianggap aktif — menu jadi
+       salah menyorot section sebelumnya (Pengalaman). */
+    const anchor = Math.max(140, window.innerHeight * 0.5);
 
     const scrollPos = window.scrollY + anchor;
 

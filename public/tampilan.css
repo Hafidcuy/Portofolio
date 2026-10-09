@@ -1492,8 +1492,13 @@ body.dark .menu-toggle span{
     background:white;
 }
 
-body.dark #navMenu{
-    background:var(--card);
+/* Background solid khusus dropdown HP (layar <=1080px).
+   Di layar lebar #navMenu harus transparan agar mengikuti latar navbar
+   tanpa membentuk kotak tersendiri yang tepinya terlihat / tidak menyatu. */
+@media (max-width:1080px){
+    body.dark #navMenu{
+        background:var(--card);
+    }
 }
 
 body.dark .card,
