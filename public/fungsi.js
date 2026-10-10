@@ -467,6 +467,20 @@ window.addEventListener("scroll", ()=>{
 const spySections = document.querySelectorAll("section[id], #home");
 const navLinks = document.querySelectorAll("#navMenu a");
 
+/* Layar lebar (min-width:1081px) memakai `html{ zoom:80% }`.
+   Akibatnya sec.offsetTop tetap memakai satuan layout asli (mis. 5042),
+   sedangkan window.scrollY & innerHeight sudah memakai satuan viewport
+   hasil zoom (5042 * 0.8 = 4033). Kalau dibandingkan mentah-mentah,
+   scrollPos selalu lebih kecil dari offsetTop sehingga section baru
+   dianggap aktif telat ~20% scroll — menu menyorot section sebelumnya. */
+function getScrollZoom(){
+
+    const z = parseFloat(getComputedStyle(document.documentElement).zoom);
+
+    return z && !isNaN(z) ? z : 1;
+
+}
+
 function updateActiveNav(){
 
     /* Ambang "section aktif" = garis tengah layar (50% tinggi viewport).
@@ -477,11 +491,13 @@ function updateActiveNav(){
 
     const scrollPos = window.scrollY + anchor;
 
+    const zoom = getScrollZoom();
+
     let currentId = "home";
 
     spySections.forEach(sec=>{
 
-        if(sec.offsetTop <= scrollPos){
+        if(sec.offsetTop * zoom <= scrollPos){
 
             currentId = sec.getAttribute("id");
 
