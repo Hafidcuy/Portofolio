@@ -2527,3 +2527,13 @@ button.btn-outline{ font-family:'Inter',sans-serif; cursor:pointer; }
     .reveal{ opacity:1 !important; transform:none !important; }
     a{ color:#14181F; text-decoration:none; }
 }
+
+/* Perapian logo navbar di HP 361–480px (sebelumnya teks logo
+   tertutup tombol tema/menu di lebar umum seperti 375px) */
+@media (max-width:480px){
+    .logo{ gap:7px; }
+    .logo img{ height:36px; }
+    .logo h2{ font-size:24px; letter-spacing:-.3px; }
+    .logo h2::after{ font-size:15px; margin-left:3px; }
+    .nav-action{ gap:9px; }
+}

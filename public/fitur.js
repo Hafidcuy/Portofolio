@@ -141,7 +141,10 @@
         document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !lightbox.hidden) closeLightbox(); });
     }
     document.addEventListener("click", function (e) {
-        var thumb = e.target.closest ? e.target.closest(".project-thumb img") : null;
+        /* Klik bisa mengenai lapisan overlay ::after pada .project-thumb
+           (target-nya div, bukan img) — tangani wadahnya sekalian. */
+        var thumbBox = e.target.closest ? e.target.closest(".project-thumb") : null;
+        var thumb = thumbBox ? thumbBox.querySelector("img") : null;
         if (thumb) {
             var card = thumb.closest(".project-card");
             var title = card ? (card.querySelector("h3") || {}).textContent : "";
