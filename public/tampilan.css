@@ -2651,3 +2651,38 @@ button.btn-outline{ font-family:'Inter',sans-serif; cursor:pointer; }
 @media (max-width:768px){
     .search-box{ flex:0 0 auto; width:100%; height:52px; min-height:52px; }
 }
+
+/* ===========================
+   KOREKSI ARAH TAMPILAN HP — kembali ke TENGAH yang rapi
+   (permintaan user: rata kiri terlihat ke samping & tidak rapi)
+   Versi lega tetap dipertahankan: navbar ramping, kartu lapang,
+   tombol grid 2 kolom simetris, chip filter 1 baris.
+=========================== */
+
+@media (max-width:768px){
+
+    .hero{
+        align-items:center;
+        text-align:center;
+    }
+    .left{ display:flex; flex-direction:column; align-items:center; }
+    .hero-badge{ text-align:center; align-self:center; }
+    .left h3, .left h1, .left h2{ text-align:center; }
+    .left p{ margin:0 auto; text-align:center; }
+    .right{ justify-content:center; }
+    .hero-button{ margin-left:auto; margin-right:auto; }
+    .hero-social{ justify-content:center; }
+    .hero-social::before{ text-align:center; margin-right:0; }
+
+    /* Judul & subjudul section tetap di tengah, kartu tetap lega */
+    .title, .sub-title{ text-align:center; }
+    .sub-title{ margin-left:auto; margin-right:auto; }
+
+    /* Baris chip filter di tengah (geser bila tidak muat) */
+    .filter-bar{ align-items:center; }
+    .filter-chips{ justify-content:center; }
+
+    /* Catatan kontak & hint form kembali ke tengah */
+    .contact-note{ text-align:center; }
+    .contact-form-hint{ text-align:center; }
+}
