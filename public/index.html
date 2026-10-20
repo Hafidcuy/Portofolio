@@ -5,6 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile Pelajar</title>
 
+    <!-- SEO & berbagi (hanya metadata, isi halaman tidak berubah) -->
+    <meta name="description" content="Saya adalah seorang pelajar yang memiliki minat pada dunia pemrograman, website, IoT, dan desain UI/UX.">
+    <meta name="author" content="Moch. Hafid Putra R.">
+    <meta name="robots" content="index, follow">
+    <meta id="metaThemeColor" name="theme-color" content="#EEF1F4">
+    <meta property="og:type" content="profile">
+    <meta property="og:title" content="Profile Pelajar">
+    <meta property="og:description" content="Saya adalah seorang pelajar yang memiliki minat pada dunia pemrograman, website, IoT, dan desain UI/UX.">
+    <meta property="og:image" content="logo/WhatsApp Image 2026-07-27 at 07.09.20.jpeg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Profile Pelajar">
+    <meta name="twitter:description" content="Saya adalah seorang pelajar yang memiliki minat pada dunia pemrograman, website, IoT, dan desain UI/UX.">
+    <meta name="twitter:image" content="logo/WhatsApp Image 2026-07-27 at 07.09.20.jpeg">
+    <link rel="icon" type="image/png" href="logo/foxnime_outline_transparent.png">
+    <link rel="apple-touch-icon" href="logo/foxnime_outline_transparent.png">
+    <link rel="manifest" href="manifest.webmanifest">
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"Person","name":"Moch. Hafid Putra R.","jobTitle":"Pelajar Rekayasa Perangkat Lunak","url":"https://github.com/Hafidcuy","sameAs":["https://github.com/Hafidcuy","https://www.instagram.com/ramatul_1357/"]}
+    </script>
+
     <link rel="stylesheet" href="tampilan.css">
 
     <!-- Google Font -->
@@ -17,6 +37,12 @@
 
 </head>
 <body>
+
+<a class="skip-link" href="#about">Lewati ke konten</a>
+<div class="scroll-progress" aria-hidden="true"><span id="scrollProgressBar"></span></div>
+<div class="offline-banner" id="offlineBanner" role="status" hidden>
+    <i class="fas fa-wifi"></i> Kamu sedang offline — menampilkan versi yang tersimpan.
+</div>
 
 <!-- ================= NAVBAR ================= -->
 
@@ -41,11 +67,11 @@
 
     <div class="nav-action">
 
-        <button id="darkBtn">
+        <button id="darkBtn" aria-label="Aktifkan atau matikan mode gelap" aria-pressed="false">
             <img id="themeIcon" src="logo/moon.png" alt="Dark Mode">
         </button>
 
-        <button class="menu-toggle" id="menuToggle">
+        <button class="menu-toggle" id="menuToggle" aria-label="Buka atau tutup menu navigasi" aria-expanded="false" aria-controls="navMenu">
 
             <span></span>
             <span></span>
@@ -56,6 +82,8 @@
     </div>
 
 </nav>
+
+<main id="mainContent">
 
 <!-- ================= HERO ================= -->
 <div id="home" class="anchor-home" aria-hidden="true"></div>
@@ -87,6 +115,14 @@
             <a href="#project" class="btn-outline">
                 <i class="fas fa-layer-group"></i> Lihat Project
             </a>
+
+            <button type="button" class="btn-outline" id="printBtn">
+                <i class="fas fa-file-arrow-down"></i> Simpan PDF
+            </button>
+
+            <button type="button" class="btn-outline" id="shareBtn">
+                <i class="fas fa-share-nodes"></i> Bagikan
+            </button>
 
         </div>
 
@@ -175,6 +211,14 @@
 
     <h2 class="title">Keahlian</h2>
 
+    <div class="filter-bar">
+        <label class="search-box">
+            <i class="fas fa-magnifying-glass" aria-hidden="true"></i>
+            <input type="search" id="skillSearch" placeholder="Cari skill..." aria-label="Cari skill" autocomplete="off">
+        </label>
+        <div class="filter-chips" id="skillChips" role="group" aria-label="Filter kategori skill"></div>
+    </div>
+
     <div class="skills">
 
         <div class="box">
@@ -233,6 +277,8 @@
         
     </div>
 
+    <p class="filter-empty" id="skillEmpty" hidden>Tidak ada skill yang cocok dengan pencarian / filter ini.</p>
+
 </section>
 
 <!-- ================= PROJECT ================= -->
@@ -240,6 +286,14 @@
 <section class="project" id="project">
 
     <h2 class="title">Project Saya</h2>
+
+    <div class="filter-bar">
+        <label class="search-box">
+            <i class="fas fa-magnifying-glass" aria-hidden="true"></i>
+            <input type="search" id="projectSearch" placeholder="Cari project..." aria-label="Cari project" autocomplete="off">
+        </label>
+        <div class="filter-chips" id="projectChips" role="group" aria-label="Filter kategori project"></div>
+    </div>
 
     <div class="projects">
 
@@ -332,6 +386,8 @@
         </div>
 
     </div>
+
+    <p class="filter-empty" id="projectEmpty" hidden>Tidak ada project yang cocok dengan pencarian / filter ini.</p>
 
 </section>
 
@@ -522,12 +578,33 @@
 
     </div>
 
+    <form class="contact-form" id="contactForm">
+        <h3 class="contact-form-title"><i class="fas fa-paper-plane"></i> Kirim Pesan Cepat</h3>
+        <div class="contact-form-grid">
+            <label>Nama
+                <input type="text" id="cfName" autocomplete="name" placeholder="Nama kamu" required>
+            </label>
+            <label>Email
+                <input type="email" id="cfEmail" autocomplete="email" placeholder="email@contoh.com" required>
+            </label>
+        </div>
+        <label>Pesan
+            <textarea id="cfMessage" rows="4" placeholder="Tulis pesanmu di sini..." required></textarea>
+        </label>
+        <button type="submit" class="btn contact-form-btn">
+            <i class="fas fa-envelope-open-text"></i> Kirim via Email
+        </button>
+        <p class="contact-form-hint">Tombol ini membuka aplikasi email kamu dengan pesan yang sudah terisi otomatis.</p>
+    </form>
+
     <p class="contact-note">
         <i class="fas fa-terminal"></i>
         Terbuka untuk kolaborasi project, magang, dan diskusi seputar web development.
     </p>
 
 </section>
+
+</main>
 
 <!-- ================= FOOTER ================= -->
 
@@ -574,7 +651,21 @@
 
 </footer>
 
+<!-- Lightbox foto project / sertifikat -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Pratinjau gambar" hidden>
+    <button type="button" class="lightbox-close" id="lightboxClose" aria-label="Tutup pratinjau">
+        <i class="fas fa-xmark"></i>
+    </button>
+    <figure class="lightbox-figure">
+        <img id="lightboxImg" src="" alt="">
+        <figcaption id="lightboxCaption"></figcaption>
+    </figure>
+</div>
+
+<div class="toast-stack" id="toastStack" aria-live="polite" aria-atomic="false"></div>
+
 <script src="fungsi.js"></script>
+<script src="fitur.js"></script>
 
 </body>
 </html>

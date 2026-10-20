@@ -2363,3 +2363,167 @@ body{
         gap:0 6px;
     }
 }
+
+/* ===========================
+   FITUR TAMBAHAN (fitur.js)
+   Ditambahkan di akhir: tidak mengubah rule lama,
+   hanya gaya untuk elemen fitur baru.
+=========================== */
+
+.skip-link{
+    position:fixed; top:-60px; left:16px; z-index:1200;
+    background:var(--primary); color:#fff; padding:12px 18px;
+    border-radius:8px; text-decoration:none; font-weight:600; transition:top .25s;
+}
+.skip-link:focus{ top:14px; }
+
+.scroll-progress{
+    position:fixed; top:0; left:0; width:100%; height:3px; z-index:1100;
+    background:transparent; pointer-events:none;
+}
+.scroll-progress span{
+    display:block; height:100%; width:0;
+    background:linear-gradient(90deg,var(--primary),var(--accent2));
+    transition:width .08s linear;
+}
+
+.offline-banner{
+    position:fixed; top:0; left:50%; transform:translateX(-50%); z-index:1150;
+    background:#14181F; color:#fff; font-size:13.5px; padding:9px 16px;
+    border-radius:0 0 10px 10px; box-shadow:var(--shadow);
+    font-family:var(--mono);
+}
+.offline-banner i{ color:var(--primary); margin-right:7px; }
+
+.filter-bar{
+    display:flex; flex-wrap:wrap; gap:14px; align-items:center; justify-content:center;
+    margin:38px auto 4px; max-width:900px;
+}
+.search-box{
+    display:flex; align-items:center; gap:10px; flex:1 1 260px; max-width:420px;
+    background:var(--card); border:1px solid var(--border); border-radius:12px;
+    padding:0 16px; min-height:48px; box-shadow:var(--shadow);
+}
+.search-box i{ color:var(--primary); }
+.search-box input{
+    border:none; outline:none; background:transparent; color:var(--text);
+    font-size:15.5px; width:100%; min-height:46px; font-family:'Inter',sans-serif;
+}
+.search-box input::placeholder{ color:var(--text2); }
+.filter-chips{ display:flex; flex-wrap:wrap; gap:9px; justify-content:center; }
+.chip{
+    border:1px solid var(--border); background:var(--card); color:var(--text2);
+    padding:10px 17px; min-height:44px; border-radius:100px; cursor:pointer;
+    font-family:var(--mono); font-size:12.5px; letter-spacing:.6px; text-transform:uppercase;
+    transition:.25s;
+}
+.chip:hover{ border-color:var(--primary); color:var(--primary); transform:translateY(-2px); }
+.chip.active{ background:var(--primary); border-color:var(--primary); color:#fff; }
+.filter-empty{
+    text-align:center; color:var(--text2); font-family:var(--mono);
+    font-size:14.5px; margin-top:34px;
+}
+
+.project-thumb img, .gambar-sertif{ cursor:zoom-in; }
+
+body.lightbox-open{ overflow:hidden; }
+.lightbox{
+    position:fixed; inset:0; z-index:1300; display:flex; align-items:center; justify-content:center;
+    background:rgba(7,11,20,.88); backdrop-filter:blur(6px); padding:22px;
+}
+.lightbox[hidden]{ display:none; }
+.lightbox-figure{ max-width:min(1000px,94vw); text-align:center; }
+.lightbox-figure img{
+    max-width:100%; max-height:82vh; object-fit:contain; border-radius:12px;
+    box-shadow:0 30px 70px rgba(0,0,0,.5);
+}
+.lightbox-figure figcaption{
+    color:#EDF1F7; font-family:var(--mono); font-size:14.5px; margin-top:14px; letter-spacing:.5px;
+}
+.lightbox-close{
+    position:absolute; top:18px; right:18px; width:48px; height:48px;
+    border:none; border-radius:12px; background:var(--primary); color:#fff;
+    font-size:20px; cursor:pointer; transition:.25s;
+}
+.lightbox-close:hover{ background:var(--secondary); transform:rotate(90deg); }
+
+.toast-stack{
+    position:fixed; bottom:96px; left:50%; transform:translateX(-50%);
+    z-index:1250; display:flex; flex-direction:column; gap:10px; align-items:center;
+    width:max-content; max-width:92vw; pointer-events:none;
+}
+.toast{
+    display:flex; align-items:center; gap:10px;
+    background:#14181F; color:#EDF1F7; border:1px solid rgba(255,255,255,.14);
+    border-left:3px solid var(--accent2); padding:13px 19px; border-radius:11px;
+    font-size:14.5px; box-shadow:0 18px 40px rgba(0,0,0,.35);
+    opacity:0; transform:translateY(14px); transition:.3s; max-width:92vw;
+}
+.toast i{ color:var(--accent2); }
+.toast.show{ opacity:1; transform:translateY(0); }
+
+.contact-form{
+    max-width:760px; margin:34px auto 0; background:var(--card);
+    border:1px solid var(--border); border-top:3px solid var(--accent2);
+    border-radius:16px; padding:28px; box-shadow:var(--shadow); text-align:left;
+}
+.contact-form-title{ font-size:20px; margin-bottom:20px; }
+.contact-form-title i{ color:var(--accent2); margin-right:8px; }
+.contact-form-grid{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.contact-form label{
+    display:flex; flex-direction:column; gap:8px; font-family:var(--mono);
+    font-size:12.5px; letter-spacing:1px; text-transform:uppercase; color:var(--text2);
+    margin-bottom:16px;
+}
+.contact-form input, .contact-form textarea{
+    border:1px solid var(--border); border-radius:10px; background:var(--bg);
+    color:var(--text); padding:13px 14px; font-size:15.5px; font-family:'Inter',sans-serif;
+    text-transform:none; letter-spacing:0; resize:vertical; width:100%;
+}
+.contact-form input:focus, .contact-form textarea:focus{
+    outline:3px solid rgba(201,118,42,.45); outline-offset:1px; border-color:var(--primary);
+}
+.contact-form-btn{ border:none; cursor:pointer; width:100%; justify-content:center; }
+.contact-form-hint{ margin-top:14px; font-size:13px; color:var(--text2); text-align:center; line-height:1.6; }
+
+button.btn-outline{ font-family:'Inter',sans-serif; cursor:pointer; }
+
+/* Layar ultra-wide: konten tidak melebar tanpa batas */
+@media (min-width:1700px){
+    section, .hero{ max-width:1560px; margin-left:auto; margin-right:auto; }
+    nav{ padding:0 max(8%, calc((100vw - 1560px)/2 + 2%)); }
+}
+
+/* Tablet landscape & HP landscape */
+@media (max-width:1080px) and (orientation:landscape){
+    .hero{ min-height:auto; padding-top:36px; padding-bottom:36px; }
+}
+
+@media (max-width:768px){
+    .filter-bar{ flex-direction:column; align-items:stretch; margin-top:28px; }
+    .search-box{ max-width:none; }
+    .filter-chips{ justify-content:flex-start; }
+    .contact-form{ padding:21px 17px; }
+    .contact-form-grid{ grid-template-columns:1fr; gap:0; }
+    .toast-stack{ bottom:78px; }
+    .hero-button button.btn-outline{ width:100%; justify-content:center; }
+}
+
+/* ===========================
+   CETAK / SIMPAN PDF (CV ringkas)
+=========================== */
+@media print{
+    @page{ margin:14mm; }
+    html{ zoom:100% !important; }
+    body{ padding-top:0; background:#fff !important; color:#14181F; }
+    nav, .hero-button, .hero-social, .scroll-progress, .offline-banner,
+    .cursor-toggle, .back-to-top, .filter-bar, .contact-form, footer,
+    .lightbox, .toast-stack, .skip-link, .menu-toggle, #darkBtn{ display:none !important; }
+    section{ padding:18px 0; page-break-inside:avoid; }
+    .hero{ min-height:auto; padding:0 0 10px; }
+    .card, .box, .project-card, .timeline-content, .contact-item{
+        box-shadow:none !important; border:1px solid #ddd !important; break-inside:avoid;
+    }
+    .reveal{ opacity:1 !important; transform:none !important; }
+    a{ color:#14181F; text-decoration:none; }
+}

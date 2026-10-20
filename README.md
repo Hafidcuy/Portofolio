@@ -84,3 +84,21 @@ Karena datanya sekarang di file `portfolio.db`, cadangkan secara berkala dengan 
 Untuk online-kan (misal ke Railway, Render, atau VPS), pastikan platform tersebut mendukung
 proses Node.js yang berjalan terus-menerus (bukan hosting statis seperti GitHub Pages/Vercel static,
 karena butuh server yang aktif untuk API dan penyimpanan file `portfolio.db` & `uploads/`).
+
+## Fitur Tambahan Frontend (2026)
+
+Lapisan fitur di `public/fitur.js` + tambahan gaya di akhir `public/tampilan.css`.
+Fitur ini **tidak mengubah isi/konten** — semua data tetap berasal dari database
+(`/api/portfolio`) seperti sebelumnya:
+
+- **Scroll progress bar** di bagian atas halaman.
+- **Lightbox**: klik foto project / gambar sertifikat untuk melihat versi besar (Esc / klik luar untuk menutup).
+- **Filter + pencarian** project (berdasarkan tag) dan skill (berdasarkan kategori) — chip dibuat otomatis dari data yang ada.
+- **Bagikan**: tombol share (Web Share API, fallback salin link) dan **Salin email** dengan klik ganda pada kartu email.
+- **Simpan PDF / Cetak CV**: tombol di hero + `@media print` yang merapikan halaman menjadi CV bersih saat dicetak / disimpan sebagai PDF.
+- **Form Kirim Pesan Cepat** di Kontak: membuka aplikasi email dengan subjek & isi yang sudah terisi otomatis (tanpa backend baru).
+- **PWA**: `manifest.webmanifest` + service worker (`sw.js`) — situs bisa di-install dan aset statis tetap bisa dibuka saat offline; API selalu network-first agar data tidak basi. Ada juga indikator offline.
+- **SEO & berbagi**: meta description, Open Graph / Twitter Card, JSON-LD, `robots.txt`, favicon, dan `theme-color` yang mengikuti mode gelap/terang.
+- **Aksesibilitas**: skip-link, `aria-expanded`/`aria-pressed` pada tombol menu & tema, menu HP bisa ditutup dengan Esc / klik di luar, dan tema awal menghormati `prefers-color-scheme`.
+- **Responsif**: batas lebar konten untuk layar ultra-wide, perapian mode landscape, dan target sentuh minimum 44px untuk kontrol baru.
+- **Performa & keamanan**: gambar project/sertifikat `loading="lazy"`, header keamanan + cache di `vercel.json` dan Express, serta endpoint `GET /api/health`.

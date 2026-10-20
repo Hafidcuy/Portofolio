@@ -1,0 +1,19 @@
+{
+    "background_color": "#EEF1F4",
+    "description": "Saya adalah seorang pelajar yang memiliki minat pada dunia pemrograman, website, IoT, dan desain UI/UX.",
+    "display": "standalone",
+    "icons": [
+        {
+            "purpose": "any",
+            "sizes": "512x512",
+            "src": "logo/foxnime_outline_transparent.png",
+            "type": "image/png"
+        }
+    ],
+    "lang": "id",
+    "name": "Profile Pelajar",
+    "scope": "./",
+    "short_name": "Portofolio",
+    "start_url": "./index.html",
+    "theme_color": "#C9762A"
+}

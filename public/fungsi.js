@@ -99,7 +99,7 @@ function renderProjects(data){
 
         card.innerHTML = `
             <div class="project-thumb">
-                <img src="${proj.img}" alt="Tampilan ${proj.title}">
+                <img src="${proj.img}" alt="Tampilan ${proj.title}" loading="lazy" decoding="async">
             </div>
             <div class="project-body">
                 <span class="project-tag">${proj.tag || "Website"}</span>
@@ -138,7 +138,7 @@ function renderCertificates(data){
         a.className = "project-card";
 
         a.innerHTML = `
-            <img class="gambar-sertif" src="${cert.img}" alt="">
+            <img class="gambar-sertif" src="${cert.img}" alt="" loading="lazy" decoding="async">
             <h3>${cert.title}</h3>
             <p>${cert.desc}</p>
         `;

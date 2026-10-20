@@ -37,6 +37,20 @@ const {
 
 const app = express();
 
+/* Header keamanan dasar untuk semua respons (tidak mengubah data/logika) */
+app.use((req, res, next) => {
+    res.setHeader("X-Content-Type-Options", "nosniff");
+    res.setHeader("Referrer-Policy", "strict-origin-when-cross-origin");
+    res.setHeader("X-Frame-Options", "SAMEORIGIN");
+    res.setHeader("Permissions-Policy", "camera=(), microphone=(), geolocation=()");
+    next();
+});
+
+/* Cek kesehatan layanan (dipakai uptime monitor / pengecekan deploy) */
+app.get("/api/health", (req, res) => {
+    res.json({ ok: true, time: new Date().toISOString() });
+});
+
 app.use(express.json());
 
 /* Di Vercel, file statis (public/**) sudah otomatis disajikan
@@ -150,6 +164,9 @@ app.post("/api/change-password", requireAuth, async (req, res)=>{
 app.get("/api/portfolio", async (req, res)=>{
 
     try{
+        /* Data publik: boleh di-cache singkat di browser/CDN agar halaman
+           terasa lebih cepat, tetap segar lewat stale-while-revalidate. */
+        res.setHeader("Cache-Control", "public, max-age=30, stale-while-revalidate=120");
         res.json(await getFullData());
     }catch(err){
         res.status(500).json({ error: err.message || "Gagal memuat data." });
