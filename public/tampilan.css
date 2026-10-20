@@ -2537,3 +2537,117 @@ button.btn-outline{ font-family:'Inter',sans-serif; cursor:pointer; }
     .logo h2::after{ font-size:15px; margin-left:3px; }
     .nav-action{ gap:9px; }
 }
+
+/* ===========================
+   REDESAIN TAMPILAN HP — lebih lega & modern
+   Hanya menata ulang ruang, ukuran & alur di layar kecil.
+   Tidak mengubah isi, warna brand, atau tampilan desktop.
+=========================== */
+
+@media (max-width:768px){
+
+    /* Navbar lebih ramping → ruang konten bertambah */
+    nav{ height:64px; padding:0 18px; }
+    body{ padding-top:64px; }
+    section{ scroll-margin-top:76px; }
+
+    /* Napas halaman konsisten: tepi 22px, antar-section lapang */
+    section{ padding:76px 22px; }
+    .title{ font-size:31px; line-height:1.25; margin-bottom:14px; }
+    .sub-title{ font-size:15.5px; line-height:1.75; }
+
+    /* ===== HERO: rata kiri seperti aplikasi modern,
+       tidak lagi menumpuk sempit di tengah ===== */
+    .hero{
+        flex-direction:column-reverse;
+        align-items:flex-start;
+        text-align:left;
+        min-height:0;
+        padding:34px 22px 64px;
+        gap:30px;
+    }
+    .left{ width:100%; }
+    .hero-badge{
+        font-size:11px; letter-spacing:.8px;
+        padding:6px 12px; max-width:100%;
+        white-space:normal; line-height:1.5; text-align:left;
+    }
+    .left h3{ font-size:13.5px; margin-top:14px; }
+    .left h1{ font-size:clamp(34px,9.6vw,46px); line-height:1.14; margin:10px 0 12px; }
+    .left h2{ font-size:17.5px; line-height:1.5; margin-bottom:14px; }
+    .left p{ font-size:16px; line-height:1.75; margin:0; max-width:34em; }
+
+    /* Foto: lebih kecil & ringan supaya teks dapat panggung */
+    .right{ width:100%; justify-content:flex-start; }
+    .profile-card{ width:min(216px,58vw); }
+    .profile-card img{ width:74%; }
+
+    /* Tombol hero: grid 2 kolom rapi, bukan tumpukan 4 baris panjang */
+    .hero-button{
+        display:grid; grid-template-columns:1fr 1fr;
+        gap:12px; width:100%; margin-top:28px;
+    }
+    .hero-button .btn,
+    .hero-button .btn-outline{
+        width:100%; justify-content:center; text-align:center;
+        padding:14px 8px; font-size:14.5px; min-height:52px;
+    }
+    .hero-social{ margin-top:26px; justify-content:flex-start; flex-wrap:wrap; }
+    .hero-social::before{ width:100%; margin-bottom:2px; }
+
+    /* ===== Kartu: padding lega, sudut lebih lembut ===== */
+    .info, .skills, .projects{ gap:18px; margin-top:36px; }
+    .card{ padding:20px; border-radius:18px; }
+    .box{ padding:24px 22px; border-radius:18px; }
+    .project-card{ border-radius:20px; }
+    .project-thumb{ aspect-ratio:16/9.5; }
+    .project-body{ padding:22px; }
+    .project-card .button-github{ gap:10px; }
+    .project-card .button-github a{ flex:1; justify-content:center; padding:11px 8px; }
+
+    /* ===== Filter: chip digeser menyamping (1 baris),
+       tidak lagi bertumpuk memakan tempat ===== */
+    .filter-bar{ margin-top:30px; gap:12px; }
+    .filter-chips{
+        flex-wrap:nowrap; overflow-x:auto; justify-content:flex-start;
+        width:100%; padding:4px 2px 10px; scrollbar-width:none;
+        -webkit-overflow-scrolling:touch;
+    }
+    .filter-chips::-webkit-scrollbar{ display:none; }
+    .chip{ flex:0 0 auto; }
+
+    /* ===== Timeline: lebih ringkas & lapang ===== */
+    .timeline{ margin-top:38px; }
+    .timeline-item{ gap:14px; margin-bottom:26px; }
+    .timeline-content{ padding:20px; border-radius:16px; }
+    .timeline-content p{ font-size:15px; line-height:1.75; }
+
+    /* ===== Kontak & form ===== */
+    .contact-card{ gap:12px; margin-top:36px; }
+    .contact-item{ padding:16px 18px; border-radius:16px; }
+    .contact-form{ padding:24px 20px; border-radius:18px; margin-top:26px; }
+    .contact-form input, .contact-form textarea{ padding:14px; font-size:16px; } /* 16px: cegah auto-zoom iOS */
+
+    /* ===== Footer & tombol melayang: hormati safe-area HP berponi ===== */
+    footer{ padding:46px 22px calc(104px + env(safe-area-inset-bottom)); }
+    .cursor-toggle, .back-to-top{ bottom:calc(16px + env(safe-area-inset-bottom)); }
+    .toast-stack{ bottom:calc(80px + env(safe-area-inset-bottom)); }
+    .offline-banner{ max-width:92vw; text-align:center; }
+}
+
+/* HP kecil (<=400px): tetap lega, tidak dipaksa sempit */
+@media (max-width:400px){
+    section{ padding:64px 18px; }
+    .hero{ padding:28px 18px 54px; }
+    .hero-button{ gap:10px; }
+    .hero-button .btn, .hero-button .btn-outline{ font-size:13.5px; }
+    .project-body{ padding:19px; }
+    .box{ padding:21px 19px; }
+}
+
+/* Perbaikan kotak pencarian di HP: basis flex 260px dari
+   tampilan baris (desktop) membuatnya jadi kotak tinggi
+   saat filter menumpuk vertikal — kunci tingginya di HP. */
+@media (max-width:768px){
+    .search-box{ flex:0 0 auto; width:100%; height:52px; min-height:52px; }
+}
