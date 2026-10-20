@@ -1,43 +1,50 @@
-# Portofolio + Admin Panel (Database Asli: SQLite)
+# Portofolio + Admin Panel (Express + Supabase)
 
-Backend Node.js + Express dengan database SQLite sungguhan (`portfolio.db`),
-menggantikan versi sebelumnya yang memakai `localStorage` browser.
+Backend Node.js + Express dengan database **Supabase** (PostgreSQL),
+dijalankan sebagai serverless function di **Vercel** lewat `api/index.js`.
 
 ## Struktur
 
 ```
-portfolio-server/
-├── server.js          <- server Express + semua route API
-├── db/
-│   ├── database.js    <- koneksi & skema SQLite
+├── app.js             <- Express app + semua route API (dipakai Vercel & lokal)
+├── api/
+│   └── index.js       <- entry point Vercel (serverless)
+├── lib/
+│   ├── database.js    <- query & pemetaan data Supabase
+│   ├── supabaseClient.js <- koneksi Supabase (server-side)
 │   └── defaultData.js <- data awal (seed) & untuk fitur "Reset ke Default"
-├── public/             <- semua yang dibuka lewat browser
+├── supabase/
+│   └── schema.sql     <- skema tabel database
+├── public/            <- semua yang dibuka lewat browser
 │   ├── index.html
 │   ├── admin.html
 │   ├── tampilan.css
 │   ├── fungsi.js
-│   └── logo/            <- taruh semua gambar (foto profil, project, sertifikat) di sini
-├── uploads/             <- gambar yang diunggah lewat admin panel disimpan di sini otomatis
-└── portfolio.db          <- file database (dibuat otomatis saat pertama dijalankan)
+│   ├── fitur.js
+│   └── logo/          <- taruh semua gambar (foto profil, project, sertifikat) di sini
+└── vercel.json        <- rewrite /api + header keamanan & cache
 ```
 
-## Cara Menjalankan
+## Cara Menjalankan (Lokal)
 
-1. Pastikan **Node.js versi 22.5 atau lebih baru** terpasang (database pakai modul bawaan `node:sqlite`).
-   Cek dengan: `node -v`
+1. Pastikan **Node.js versi 22.5 atau lebih baru** terpasang. Cek dengan: `node -v`
 
 2. Masuk ke folder project, lalu install dependency:
    ```
    npm install
    ```
 
-3. **Pindahkan folder `logo/` dari portofolio lama kamu** (berisi foto profil, screenshot project, sertifikat)
-   ke dalam `public/logo/` di project ini, supaya path gambar tetap cocok.
+3. Buat file `.env` di folder project berisi kredensial Supabase kamu:
+   ```
+   SUPABASE_URL=https://<project-ref>.supabase.co
+   SUPABASE_SERVICE_ROLE_KEY=<service-role-key>
+   ```
 
 4. Jalankan server:
    ```
    npm start
    ```
+   (atau `npm run dev` untuk mode watch yang auto-restart saat file berubah.)
 
 5. Buka di browser:
    - Portofolio: http://localhost:3000/index.html
@@ -48,13 +55,13 @@ cukup jalankan `npm start`.
 
 ## Cara Kerja Data
 
-- Semua data (profil, skill, project, sertifikat, pengalaman, kontak) tersimpan di **file `portfolio.db`**
-  di folder project—database SQLite sungguhan, bukan di browser.
+- Semua data (profil, skill, project, sertifikat, pengalaman, kontak) tersimpan di **database Supabase**
+  (PostgreSQL) — skema tabelnya ada di `supabase/schema.sql`.
 - Admin panel bicara ke server lewat REST API (`/api/...`) memakai `fetch()`, dengan token login
   yang perlu disertakan di header `Authorization: Bearer <token>` untuk operasi tulis (tambah/ubah/hapus).
 - Password admin disimpan **ter-hash** (bcrypt) di database, bukan teks polos.
-- Upload gambar lewat admin panel (Profil/Project/Sertifikat) langsung tersimpan sebagai file asli
-  di folder `uploads/` di server, dan otomatis diisikan ke field path gambar.
+- Upload gambar lewat admin panel (Profil/Project/Sertifikat) tersimpan di **Supabase Storage**
+  (bucket `uploads`), dan URL publiknya otomatis diisikan ke field path gambar.
 
 ## Endpoint API (ringkas)
 
@@ -75,15 +82,16 @@ cukup jalankan `npm start`.
 
 ## Backup Database
 
-Karena datanya sekarang di file `portfolio.db`, cadangkan secara berkala dengan cara:
-- Salin file `portfolio.db` ke tempat lain, **atau**
-- Pakai fitur "Unduh Data (JSON)" di menu Pengaturan pada admin panel.
+Cadangkan data secara berkala dengan cara:
+- Pakai fitur "Unduh Data (JSON)" di menu Pengaturan pada admin panel, **atau**
+- Export tabel dari Supabase Dashboard (Table Editor / SQL Editor).
 
-## Deploy ke Hosting
+## Deploy
 
-Untuk online-kan (misal ke Railway, Render, atau VPS), pastikan platform tersebut mendukung
-proses Node.js yang berjalan terus-menerus (bukan hosting statis seperti GitHub Pages/Vercel static,
-karena butuh server yang aktif untuk API dan penyimpanan file `portfolio.db` & `uploads/`).
+Deploy utama di **Vercel**: setiap push ke branch `main` di GitHub otomatis memicu redeploy.
+Vercel menjalankan `api/index.js` sebagai serverless function dan menyajikan folder `public/`
+sebagai file statis. Pastikan environment variable `SUPABASE_URL` dan
+`SUPABASE_SERVICE_ROLE_KEY` sudah diatur di dashboard Vercel (Settings → Environment Variables).
 
 ## Fitur Tambahan Frontend (2026)
 

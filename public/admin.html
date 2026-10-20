@@ -691,6 +691,9 @@ body{
                 <label>Link Demo/View</label>
                 <input type="url" id="projectView" required>
 
+                <label>Tag/Kategori</label>
+                <input type="text" id="projectTag" placeholder="mis. Website / UI/UX">
+
                 <div class="form-actions">
                     <button type="submit" class="btn-primary" style="width:auto;">Simpan</button>
                     <button type="button" class="btn-outline" id="cancelProjectBtn">Batal</button>
@@ -1334,6 +1337,7 @@ function openProjectForm(id){
         document.getElementById("projectDesc").value = p.desc;
         document.getElementById("projectGithub").value = p.github;
         document.getElementById("projectView").value = p.view;
+        document.getElementById("projectTag").value = p.tag || "";
     }else{
         projectForm.reset();
     }
@@ -1377,7 +1381,8 @@ projectForm.addEventListener("submit", async (e)=>{
         title: document.getElementById("projectTitle").value,
         desc: document.getElementById("projectDesc").value,
         github: document.getElementById("projectGithub").value,
-        view: document.getElementById("projectView").value
+        view: document.getElementById("projectView").value,
+        tag: document.getElementById("projectTag").value
     };
 
     try{

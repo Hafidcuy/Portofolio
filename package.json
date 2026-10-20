@@ -1,11 +1,11 @@
 {
   "name": "portofolio-server",
   "version": "1.0.0",
-  "description": "Backend Express + SQLite untuk portofolio & admin panel",
-  "main": "server.js",
+  "description": "Backend Express + Supabase untuk portofolio & admin panel",
+  "main": "app.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "node --watch server.js"
+    "dev": "node --watch app.js",
+    "start": "node app.js"
   },
   "engines": {
     "node": ">=22.5.0"

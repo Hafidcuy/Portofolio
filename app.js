@@ -2,7 +2,7 @@
    EXPRESS APP -- semua route API
    Dipakai oleh:
    - api/index.js (untuk Vercel, serverless)
-   - server.js (untuk development lokal, node server.js)
+   - dijalankan langsung (npm start / node app.js) untuk development lokal
 ========================================================== */
 
 require("dotenv").config();
@@ -285,7 +285,8 @@ setupCrud("projects", "projects", [
     { col: "title", key: "title" },
     { col: "description", key: "desc" },
     { col: "github", key: "github" },
-    { col: "view", key: "view" }
+    { col: "view", key: "view" },
+    { col: "tag", key: "tag" }
 ], rowToProject);
 
 setupCrud("certificates", "certificates", [
@@ -392,5 +393,12 @@ app.post("/api/upload", requireAuth, (req, res)=>{
     });
 
 });
+
+/* Server lokal hanya jalan bila file ini dieksekusi langsung
+   (npm start / node app.js). Di Vercel, app dipakai lewat api/index.js. */
+if (require.main === module) {
+    const PORT = process.env.PORT || 3000;
+    app.listen(PORT, () => console.log(`Server lokal jalan di http://localhost:${PORT}`));
+}
 
 module.exports = app;

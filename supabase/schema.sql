@@ -34,6 +34,7 @@ create table if not exists projects (
     description text,
     github text,
     view text,
+    tag text,
     sort_order int
 );
 
