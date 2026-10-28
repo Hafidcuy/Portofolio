@@ -162,6 +162,12 @@ body{
     padding:24px 0;
 }
 
+/* ===== ELEMEN KHUSUS HP (tampil di bawah 820px) ===== */
+
+.mobile-topbar{ display:none; }
+.nav-backdrop{ display:none; }
+.menu-btn{ display:none; }
+
 .brand{ padding:0 24px 24px; border-bottom:1px solid var(--border); margin-bottom:16px; }
 .brand h2{ font-size:24px; }
 .brand h2 span{ color:var(--accent2); }
@@ -431,99 +437,225 @@ body{
 .toast.error{ background:var(--danger); }
 
 @media(max-width:820px){
+
+    html{ -webkit-text-size-adjust:100%; }
+    body{ -webkit-tap-highlight-color:transparent; }
+
+    /* ============ APP BAR DI ATAS ============ */
+
     .admin-app{ flex-direction:column; }
 
-    /* Sidebar jadi bar atas: menu di-scroll mendatar,
-       tombol "Lihat Portofolio" & "Keluar" tetap terlihat */
-    .sidebar{
-        width:100%;
-        min-width:0;
-        flex-direction:row;
+    .mobile-topbar{
+        display:flex;
         align-items:center;
-        gap:8px;
-        padding:10px 12px;
-        overflow:hidden;
+        gap:10px;
         position:sticky;
         top:0;
-        z-index:20;
+        z-index:60;
+        background:rgba(255,255,255,.92);
+        -webkit-backdrop-filter:blur(10px);
+        backdrop-filter:blur(10px);
+        border-bottom:1px solid var(--border);
+        padding:10px 14px;
+        padding-top:calc(10px + env(safe-area-inset-top));
     }
 
-    .brand{ display:none; }
-
-    .side-nav{
-        flex-direction:row;
-        flex-wrap:nowrap;
-        gap:6px;
-        padding:0;
-        flex:1;
-        min-width:0;
-        overflow-x:auto;
-        -webkit-overflow-scrolling:touch;
-        scrollbar-width:none;
+    .menu-btn{
+        display:flex;
+        width:44px;
+        height:44px;
+        flex:0 0 auto;
+        align-items:center;
+        justify-content:center;
+        border-radius:10px;
+        border:1px solid var(--border);
+        background:var(--bg);
+        color:var(--text);
+        font-size:18px;
+        cursor:pointer;
     }
 
-    .side-nav::-webkit-scrollbar{ display:none; }
+    .menu-btn:active{ background:var(--primary); color:#fff; }
 
-    /* Petunjuk bahwa menu masih bisa digeser ke kanan */
-    .side-nav{
-        -webkit-mask-image:linear-gradient(to right,#000 calc(100% - 34px),rgba(0,0,0,.12));
-        mask-image:linear-gradient(to right,#000 calc(100% - 34px),rgba(0,0,0,.12));
+    .mobile-title{ flex:1; min-width:0; }
+
+    .mobile-title small{
+        display:block;
+        font-family:var(--mono);
+        font-size:10px;
+        letter-spacing:1px;
+        text-transform:uppercase;
+        color:var(--accent2);
     }
 
-    .side-nav.at-end{
-        -webkit-mask-image:none;
-        mask-image:none;
+    .mobile-title h2{
+        font-size:17px;
+        white-space:nowrap;
+        overflow:hidden;
+        text-overflow:ellipsis;
     }
+
+    .top-link{
+        display:flex;
+        width:44px;
+        height:44px;
+        flex:0 0 auto;
+        align-items:center;
+        justify-content:center;
+        border-radius:10px;
+        border:1px solid var(--border);
+        background:var(--bg);
+        color:var(--text2);
+        text-decoration:none;
+        font-size:16px;
+    }
+
+    .top-link:active{ background:var(--primary); color:#fff; }
+
+    /* ============ SIDEBAR JADI LACI (DRAWER) ============ */
+
+    .sidebar{
+        position:fixed;
+        top:0;
+        left:0;
+        bottom:0;
+        width:280px;
+        max-width:86vw;
+        z-index:80;
+        padding:20px 0 calc(16px + env(safe-area-inset-bottom));
+        transform:translateX(-102%);
+        transition:transform .28s ease;
+        overflow-y:auto;
+        overscroll-behavior:contain;
+        visibility:hidden;
+        box-shadow:0 0 60px rgba(0,0,0,.22);
+    }
+
+    body.nav-open .sidebar{ transform:translateX(0); visibility:visible; }
+
+    .nav-backdrop{
+        display:block;
+        position:fixed;
+        inset:0;
+        z-index:75;
+        background:rgba(10,12,16,.45);
+        opacity:0;
+        pointer-events:none;
+        transition:opacity .25s;
+    }
+
+    body.nav-open .nav-backdrop{ opacity:1; pointer-events:auto; }
+    body.nav-open{ overflow:hidden; }
+
+    .brand{ display:block; padding:0 20px 18px; }
+    .brand h2{ font-size:22px; }
+
+    .side-nav{ flex-direction:column; gap:4px; padding:0 12px; overflow-x:visible; }
 
     .nav-item{
-        flex:0 0 auto;
-        white-space:nowrap;
-        padding:11px 12px;
-        font-size:14px;
-        min-height:42px;
+        min-height:48px;
+        padding:13px 14px;
+        font-size:15px;
+        border-radius:10px;
     }
 
-    .side-bottom{
-        display:flex;
-        flex-direction:row;
-        gap:6px;
-        padding:0;
-        border-top:none;
-        flex:0 0 auto;
-    }
+    .nav-item:active{ background:var(--bg); }
 
-    /* versi ikon saja supaya muat di layar sempit */
+    .side-bottom{ flex-direction:column; gap:4px; padding:16px 12px 0; }
+
     .side-bottom .side-link{
-        font-size:0;
-        padding:0;
-        width:42px;
-        height:42px;
-        justify-content:center;
+        width:auto;
+        height:auto;
+        padding:13px 14px;
+        font-size:14px;
+        gap:12px;
+        justify-content:flex-start;
     }
 
-    .side-bottom .side-link i{ font-size:16px; }
+    .side-bottom .side-link:active{ background:var(--bg); }
 
-    .content{ padding:24px; }
+    /* ============ ISI HALAMAN ============ */
 
-    /* Kartu statistik 2 kolom di HP agar tidak menumpuk panjang */
-    .stat-grid{
-        grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
-        gap:14px;
+    .content{
+        padding:18px 16px calc(30px + env(safe-area-inset-bottom));
     }
 
-    .stat-card{ padding:16px; gap:12px; }
-    .stat-card i{ font-size:24px; }
-    .stat-card h3{ font-size:19px; }
+    .panel{ scroll-margin-top:80px; }
+    .panel h1{ font-size:24px; margin-bottom:4px; }
+    .panel-sub{ font-size:14px; margin-bottom:18px; }
 
-    /* Tombol aksi (edit/hapus) lebih besar agar nyaman disentuh */
-    .icon-btn{ width:40px; height:40px; }
+    /* Kartu statistik 2 kolom supaya tidak menumpuk panjang */
+    .stat-grid{ grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+    .stat-card{ padding:14px; gap:10px; border-radius:10px; }
+    .stat-card i{ font-size:22px; }
+    .stat-card h3{ font-size:18px; }
+    .stat-card p{ font-size:11px; }
 
-    /* Checkbox kecil → perbesar target sentuh */
+    /* ============ FORM ============ */
+
+    .form-card{
+        padding:18px 16px;
+        margin-bottom:18px;
+        scroll-margin-top:80px;
+    }
+
+    .form-card h3{ font-size:17px; }
+    .form-card label{ font-size:12px; margin:14px 0 6px; }
+
+    /* font-size 16px mencegah iOS otomatis memperbesar layar saat fokus */
+    .form-card input,
+    .form-card textarea,
+    .login-card input{
+        font-size:16px;
+        padding:12px 14px;
+    }
+
+    .form-card input[type=file]{ padding:10px; }
+    .form-card textarea{ min-height:110px; }
+
+    .form-actions{ flex-direction:column; gap:10px; margin-top:18px; }
+
+    .btn-primary,.btn-outline{ min-height:48px; padding:13px 22px; }
+
+    .form-actions .btn-primary,
+    .form-actions .btn-outline{ width:100%; }
+
+    .file-label{ display:block; margin:8px 0 0; }
+
+    /* ============ DAFTAR ITEM ============ */
+
+    .list-grid{ grid-template-columns:minmax(0,1fr); gap:12px; margin:16px 0; }
+    .list-item{ padding:16px; }
+    .list-item img{ height:140px; }
+    .list-item-actions{ gap:10px; }
+
+    .icon-btn{
+        width:44px;
+        height:44px;
+        border-radius:10px;
+        font-size:16px;
+    }
+
     input[type=checkbox]{
-        width:18px;
-        height:18px;
+        width:20px;
+        height:20px;
         accent-color:var(--primary);
     }
+
+    /* ============ TOAST ============ */
+
+    .toast{
+        left:16px;
+        right:16px;
+        bottom:calc(16px + env(safe-area-inset-bottom));
+        text-align:center;
+    }
+
+    /* ============ LOGIN ============ */
+
+    .login-wrap{ padding:16px; }
+    .login-card{ padding:28px 20px; }
+    .login-card h2{ font-size:26px; }
 }
 
 </style>
@@ -555,7 +687,23 @@ body{
 
 <div id="adminApp" class="admin-app" style="display:none;">
 
-    <aside class="sidebar">
+    <!-- APP BAR KHUSUS HP -->
+    <header class="mobile-topbar">
+        <button type="button" id="menuBtn" class="menu-btn" aria-label="Buka menu" aria-expanded="false" aria-controls="sidebar">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="mobile-title">
+            <small>Admin Panel</small>
+            <h2 id="mobilePageTitle">Dashboard</h2>
+        </div>
+        <a href="index.html" target="_blank" class="top-link" title="Lihat portofolio" aria-label="Lihat portofolio">
+            <i class="fas fa-up-right-from-square"></i>
+        </a>
+    </header>
+
+    <div id="navBackdrop" class="nav-backdrop"></div>
+
+    <aside class="sidebar" id="sidebar">
 
         <div class="brand"><h2>&lt;Admin<span>.</span>&gt;</h2></div>
 
@@ -1071,8 +1219,68 @@ navItems.forEach(item=>{
         focusNavItem(item);
         setTimeout(updateNavEnd, 350);
 
+        /* HP: tutup laci menu & tampilkan judul halaman di app bar */
+        setNavOpen(false);
+        if(mobilePageTitle) mobilePageTitle.textContent = item.textContent.trim();
+        if(isMobile()) window.scrollTo({ top:0, behavior:"smooth" });
+
     });
 
+});
+
+/* ==========================
+   MENU HP (DRAWER)
+========================== */
+
+const menuBtn = document.getElementById("menuBtn");
+const navBackdrop = document.getElementById("navBackdrop");
+const mobilePageTitle = document.getElementById("mobilePageTitle");
+
+function isMobile(){
+    return window.matchMedia("(max-width:820px)").matches;
+}
+
+function setNavOpen(open){
+    document.body.classList.toggle("nav-open", open);
+    if(menuBtn) menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
+}
+
+if(menuBtn){
+    menuBtn.addEventListener("click", ()=>{
+        setNavOpen(!document.body.classList.contains("nav-open"));
+    });
+}
+
+if(navBackdrop){
+    navBackdrop.addEventListener("click", ()=> setNavOpen(false));
+}
+
+document.addEventListener("keydown", (e)=>{
+    if(e.key === "Escape") setNavOpen(false);
+});
+
+window.addEventListener("resize", ()=>{
+    if(!isMobile()) setNavOpen(false);
+});
+
+/* Form tambah/ubah yang baru dibuka langsung
+   digulir ke posisi terlihat agar tidak kehilangan arah */
+const formObserver = new MutationObserver((muts)=>{
+
+    muts.forEach(m=>{
+
+        const el = m.target;
+
+        if(el.classList.contains("form-card") && !el.classList.contains("hidden") && isMobile()){
+            setTimeout(()=> el.scrollIntoView({ behavior:"smooth", block:"start" }), 60);
+        }
+
+    });
+
+});
+
+document.querySelectorAll(".form-card").forEach(f=>{
+    formObserver.observe(f, { attributes:true, attributeFilter:["class"] });
 });
 
 /* ==========================
