@@ -2686,3 +2686,53 @@ button.btn-outline{ font-family:'Inter',sans-serif; cursor:pointer; }
     .contact-note{ text-align:center; }
     .contact-form-hint{ text-align:center; }
 }
+
+/* ===========================
+   PENATAAN RAPI — audit visual 2026-10-31
+   Hanya tampilan, isi tidak berubah. Menutup temuan audit:
+   (1) tombol miring (clip-path) tidak satu keluarga dengan
+       tombol sudut membulat di bagian lain situs;
+   (2) nama di hero patah menyisakan "R." sendirian di baris dua;
+   (3) bingkai gambar sertifikat tidak seragam;
+   (4) baris terakhir grid Skill & Project rata kiri dan
+       tinggi kartu project tidak seragam di desktop.
+=========================== */
+
+/* (1) Satu keluarga tombol: sudut membulat, tanpa potongan miring */
+.btn, .btn-outline,
+.project-card .button-github a,
+.contact-form-btn,
+.cursor-toggle,
+.back-to-top{
+    clip-path:none;
+    border-radius:10px;
+}
+
+/* (2) Nama hero membagi baris secara seimbang */
+.left h1{
+    text-wrap:balance;
+}
+
+/* (3) Bingkai gambar sertifikat satu ukuran & satu gaya */
+.certificate .projects .gambar-sertif{
+    aspect-ratio:4/3;
+    object-fit:contain;
+    background:#fff;
+}
+
+/* (4) Desktop: grid jadi flex terpusat — baris tak lengkap ikut ke
+       tengah, kartu satu baris sama tinggi, tombol project sejajar */
+@media (min-width:1081px){
+    .skills,
+    #project .projects{
+        display:flex;
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+    .skills > .box{
+        flex:0 1 calc((100% - 60px)/3);
+    }
+    #project .projects > .project-card{
+        flex:0 1 calc((100% - 70px)/3);
+    }
+}
