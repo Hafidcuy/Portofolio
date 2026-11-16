@@ -28,6 +28,8 @@ h1,h2,h3,.logo h2{
     --secondary:#A85E1D;
     --accent2:#2FA37D;
 
+    --head:'Space Grotesk',sans-serif;
+
     --bg:#EEF1F4;
     --card:#FFFFFF;
 
@@ -44,6 +46,39 @@ h1,h2,h3,.logo h2{
 
     --nav-bg:rgba(255,255,255,.85);
 
+}
+
+/* ===========================
+   INTERAKSI 3D
+=========================== */
+
+.tilt-card{
+    position:relative;
+    transform:perspective(900px) rotateX(var(--tilt-x,0deg)) rotateY(var(--tilt-y,0deg)) translateZ(0);
+    transform-style:preserve-3d;
+    transition:transform .18s ease, box-shadow .25s ease;
+    will-change:transform;
+    overflow:hidden;
+}
+
+.tilt-card::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    background:radial-gradient(circle at var(--glow-x,50%) var(--glow-y,50%), rgba(255,255,255,.25), transparent 38%);
+    opacity:0;
+    transition:opacity .25s ease;
+}
+
+.tilt-card:hover{
+    box-shadow:0 24px 45px rgba(20,24,31,.16);
+}
+
+.tilt-card:hover::after{ opacity:1; }
+
+@media (prefers-reduced-motion: reduce){
+    .tilt-card{ transition:none; }
 }
 
 /* ===========================

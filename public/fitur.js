@@ -224,21 +224,48 @@
         if (item) copyText(item.getAttribute("href").replace("mailto:", ""), "Alamat email disalin.");
     });
 
-    /* ---------- Form kontak cepat -> aplikasi email ---------- */
+    /* ---------- Form kontak cepat -> kirim ke server (kotak masuk admin),
+         dengan cadangan membuka aplikasi email bila server tak terjangkau ---------- */
     var form = $("#contactForm");
     if (form) {
         form.addEventListener("submit", function (e) {
             e.preventDefault();
+
             var mailItem = $('.contact-item[href^="mailto:"]');
             var to = mailItem ? mailItem.getAttribute("href").replace("mailto:", "") : "";
-            var name = ($("#cfName") || {}).value || "";
-            var email = ($("#cfEmail") || {}).value || "";
-            var msg = ($("#cfMessage") || {}).value || "";
-            if (!to) { toast("Alamat email tujuan tidak ditemukan.", "fa-triangle-exclamation"); return; }
+            var name = (($("#cfName") || {}).value || "").trim();
+            var email = (($("#cfEmail") || {}).value || "").trim();
+            var msg = (($("#cfMessage") || {}).value || "").trim();
+            var btn = form.querySelector("button[type=submit]");
+
+            if (!name || !email || !msg) { toast("Lengkapi nama, email, dan pesan dulu.", "fa-triangle-exclamation"); return; }
+
             var subject = encodeURIComponent("Pesan dari portofolio — " + name);
             var body = encodeURIComponent(msg + "\n\n— " + name + " (" + email + ")");
-            window.location.href = "mailto:" + to + "?subject=" + subject + "&body=" + body;
-            toast("Membuka aplikasi email kamu...");
+
+            function fallbackMail() {
+                if (!to) { toast("Alamat email tujuan tidak ditemukan.", "fa-triangle-exclamation"); return; }
+                window.location.href = "mailto:" + to + "?subject=" + subject + "&body=" + body;
+                toast("Membuka aplikasi email kamu...");
+            }
+
+            if (btn) { btn.disabled = true; btn.dataset.old = btn.innerHTML; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengirim...'; }
+
+            fetch("/api/messages", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ name: name, email: email, message: msg })
+            }).then(function (res) {
+                if (!res.ok) throw new Error("server");
+                return res.json();
+            }).then(function () {
+                form.reset();
+                toast("Pesan terkirim! Akan segera saya balas.", "fa-paper-plane");
+            }).catch(function () {
+                fallbackMail();
+            }).finally(function () {
+                if (btn && btn.dataset.old) { btn.innerHTML = btn.dataset.old; btn.disabled = false; delete btn.dataset.old; }
+            });
         });
     }
 

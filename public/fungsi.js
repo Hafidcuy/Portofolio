@@ -648,6 +648,36 @@ magneticEls.forEach(btn=>{
 
 
 /* ==========================
+   EFEK 3D TILT PADA KARTU
+========================== */
+
+if(!window.matchMedia("(prefers-reduced-motion: reduce)").matches && !window.matchMedia("(pointer: coarse)").matches){
+
+    document.querySelectorAll(".profile-card, .box, .project-card, .info .card, .timeline-content").forEach(card=>{
+
+        card.classList.add("tilt-card");
+
+        card.addEventListener("pointermove", e=>{
+            const rect = card.getBoundingClientRect();
+            const x = (e.clientX - rect.left) / rect.width - .5;
+            const y = (e.clientY - rect.top) / rect.height - .5;
+            card.style.setProperty("--tilt-x", `${y * -8}deg`);
+            card.style.setProperty("--tilt-y", `${x * 8}deg`);
+            card.style.setProperty("--glow-x", `${(x + .5) * 100}%`);
+            card.style.setProperty("--glow-y", `${(y + .5) * 100}%`);
+        });
+
+        card.addEventListener("pointerleave", ()=>{
+            card.style.setProperty("--tilt-x", "0deg");
+            card.style.setProperty("--tilt-y", "0deg");
+        });
+
+    });
+
+}
+
+
+/* ==========================
    TOMBOL BACK TO TOP
 ========================== */
 

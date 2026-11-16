@@ -89,19 +89,6 @@ body{
     min-height:18px;
 }
 
-.login-hint{
-    font-size:12px;
-    color:var(--text2);
-    margin-top:16px;
-}
-
-.login-hint code{
-    background:var(--bg);
-    padding:2px 6px;
-    border-radius:4px;
-    font-family:var(--mono);
-}
-
 /* ===== BUTTONS ===== */
 
 .btn-primary,.btn-outline{
@@ -167,6 +154,33 @@ body{
 .mobile-topbar{ display:none; }
 .nav-backdrop{ display:none; }
 .menu-btn{ display:none; }
+.top-theme-btn{ 
+    display:none; 
+    margin-left:auto;
+    background:none;
+    border:none;
+    color:var(--text);
+    font-size:16px;
+    padding:4px 8px;
+    cursor:pointer;
+    margin-right:4px;
+}
+.side-theme-btn{
+    display:block;
+    background:none;
+    border:none;
+    color:var(--text2);
+    font-family:'Inter',sans-serif;
+    font-size:13px;
+    text-align:left;
+    padding:8px 14px;
+    cursor:pointer;
+    width:100%;
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+.side-theme-btn:hover{ color:var(--primary); }
 
 .brand{ padding:0 24px 24px; border-bottom:1px solid var(--border); margin-bottom:16px; }
 .brand h2{ font-size:24px; }
@@ -410,6 +424,134 @@ body{
 
 .icon-btn:hover{ background:var(--primary); color:#fff; border-color:var(--primary); }
 .icon-btn.danger:hover{ background:var(--danger); border-color:var(--danger); }
+
+.list-tools{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:10px;
+}
+.list-tools input{
+    flex:1;
+    max-width:100%;
+    padding:10px 14px;
+    border-radius:8px;
+    border:1px solid var(--border);
+    background:var(--bg);
+    color:var(--text);
+    font-size:14px;
+    width:220px;
+}
+.list-tools .badge-count{
+    font-size:12px;
+    color:var(--text2);
+    font-family:var(--mono);
+}
+
+/* ===== PESAN MASUK ===== */
+
+.nav-badge{
+    margin-left:auto;
+    background:var(--danger);
+    color:#fff;
+    font-size:11px;
+    font-family:var(--mono);
+    min-width:20px;
+    padding:2px 6px;
+    border-radius:10px;
+    text-align:center;
+}
+
+.nav-badge.hidden{ display:none; }
+
+.msg-list{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+}
+
+.msg-item{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-left:4px solid var(--border);
+    border-radius:12px;
+    padding:18px 20px;
+    box-shadow:var(--shadow);
+}
+
+.msg-item.unread{
+    border-left-color:var(--primary);
+    background:linear-gradient(90deg, rgba(201,118,42,.05), var(--card) 30%);
+}
+
+.msg-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-bottom:8px;
+}
+
+.msg-head h4{ font-size:16px; display:flex; align-items:center; gap:8px; }
+
+.msg-mail{
+    font-size:13px;
+    color:var(--accent2);
+    font-family:var(--mono);
+    text-decoration:none;
+}
+
+.msg-mail:hover{ text-decoration:underline; }
+
+.msg-head time{
+    font-size:12px;
+    color:var(--text2);
+    font-family:var(--mono);
+    white-space:nowrap;
+}
+
+.msg-body{
+    font-size:14px;
+    line-height:1.6;
+    color:var(--text2);
+    white-space:pre-wrap;
+    word-break:break-word;
+    margin-bottom:12px;
+}
+
+.msg-actions{
+    display:flex;
+    gap:8px;
+    justify-content:flex-end;
+}
+
+.msg-actions a.icon-btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    text-decoration:none;
+}
+
+/* ===== DARK MODE ADMIN ===== */
+body.admin-dark{ background:var(--bg-dark,#0f172a); color:var(--text-dark,#e2e8f0); }
+body.admin-dark .card,
+body.admin-dark .form-card,
+body.admin-dark .list-item,
+body.admin-dark .login-card{ background:var(--card-dark,#1e293b); color:var(--text-dark); border-color:rgba(255,255,255,.08); }
+body.admin-dark .stat-card{ background:var(--card-dark,#1e293b); border-color:rgba(255,255,255,.08); color:var(--text-dark); }
+body.admin-dark .login-card{ background:var(--card-dark,#1e293b); }
+body.admin-dark input,
+body.admin-dark textarea{ background:rgba(0,0,0,.25); color:var(--text-dark); border-color:rgba(255,255,255,.12); }
+body.admin-dark .form-card label{ color:var(--text-dark); }
+body.admin-dark .list-item p{ color:var(--text-dark); opacity:.85; }
+body.admin-dark .tag{ border-color:var(--accent2); color:var(--accent2); }
+body.admin-dark .toast{ background:var(--text-dark); color:#fff; }
+body.admin-dark .upload-msg{ color:#94a3b8; }
+body.admin-dark .btn-outline{ border-color:rgba(255,255,255,.15); color:var(--text-dark); }
+body.admin-dark .btn-outline:hover{ background:rgba(255,255,255,.05); }
+body.admin-dark .side-nav{ background:var(--card-dark,#1e293b); border-color:rgba(255,255,255,.08); }
+body.admin-dark .side-bottom{ border-top-color:rgba(255,255,255,.08); }
 
 #passwordMsg{ font-size:13px; margin-top:10px; min-height:16px; }
 
@@ -677,8 +819,6 @@ body{
 
         <p id="loginError" class="login-error"></p>
 
-        <p class="login-hint">Password default: <code>admin123</code> — ubah lewat menu Pengaturan setelah masuk.</p>
-
     </form>
 
 </div>
@@ -696,6 +836,9 @@ body{
             <small>Admin Panel</small>
             <h2 id="mobilePageTitle">Dashboard</h2>
         </div>
+        <button type="button" id="mobileThemeBtn" class="top-theme-btn" title="Mode Gelap/Terang" aria-label="Ganti tema">
+            <i class="fas fa-moon"></i>
+        </button>
         <a href="index.html" target="_blank" class="top-link" title="Lihat portofolio" aria-label="Lihat portofolio">
             <i class="fas fa-up-right-from-square"></i>
         </a>
@@ -715,10 +858,14 @@ body{
             <button class="nav-item" data-target="sertifikat"><i class="fas fa-award"></i> Sertifikat</button>
             <button class="nav-item" data-target="pengalaman"><i class="fas fa-briefcase"></i> Pengalaman</button>
             <button class="nav-item" data-target="kontak"><i class="fas fa-envelope"></i> Kontak</button>
+            <button class="nav-item" data-target="pesan"><i class="fas fa-inbox"></i> Pesan <span class="nav-badge hidden" id="pesanBadge">0</span></button>
             <button class="nav-item" data-target="pengaturan"><i class="fas fa-gear"></i> Pengaturan</button>
         </nav>
 
         <div class="side-bottom">
+            <button type="button" id="sideThemeBtn" class="side-theme-btn" title="Mode Gelap/Terang">
+                <i class="fas fa-moon"></i> Mode Gelap/Terang
+            </button>
             <a href="index.html" target="_blank" class="side-link" title="Lihat Portofolio" aria-label="Lihat Portofolio"><i class="fas fa-up-right-from-square"></i> Lihat Portofolio</a>
             <button id="logoutBtn" class="side-link logout" title="Keluar" aria-label="Keluar"><i class="fas fa-right-from-bracket"></i> Keluar</button>
         </div>
@@ -805,6 +952,11 @@ body{
 
             </form>
 
+            <div class="list-tools">
+                <input type="text" id="skillSearchInput" placeholder="Cari skill...">
+                <span class="badge-count" id="skillCount">0</span>
+            </div>
+
             <div class="list-grid" id="skillList"></div>
         </section>
 
@@ -847,6 +999,12 @@ body{
 
             </form>
 
+            <div class="list-tools">
+                <input type="text" id="projectSearchInput" placeholder="Cari project...">
+
+                <span class="badge-count" id="projectCount">0</span>
+            </div>
+
             <div class="list-grid" id="projectList"></div>
         </section>
 
@@ -882,6 +1040,12 @@ body{
                 </div>
 
             </form>
+
+            <div class="list-tools">
+                <input type="text" id="certSearchInput" placeholder="Cari sertifikat...">
+
+                <span class="badge-count" id="certCount">0</span>
+            </div>
 
             <div class="list-grid" id="certList"></div>
         </section>
@@ -919,6 +1083,12 @@ body{
 
             </form>
 
+            <div class="list-tools">
+                <input type="text" id="expSearchInput" placeholder="Cari pengalaman...">
+
+                <span class="badge-count" id="expCount">0</span>
+            </div>
+
             <div class="list-grid" id="expList"></div>
         </section>
 
@@ -951,6 +1121,22 @@ body{
             </form>
         </section>
 
+        <!-- PESAN MASUK -->
+        <section id="pesan" class="panel">
+            <h1>Pesan Masuk</h1>
+            <p class="panel-sub">Pesan yang dikirim pengunjung lewat formulir kontak di portofolio.</p>
+
+            <div class="list-tools">
+                <input type="text" id="msgSearchInput" placeholder="Cari pesan...">
+                <button class="btn-outline" id="refreshMsgBtn" style="width:auto;"><i class="fas fa-rotate"></i> Muat Ulang</button>
+                <span class="badge-count" id="msgCount">0 pesan</span>
+            </div>
+
+            <div class="msg-list" id="msgList">
+                <p class="panel-sub">Belum ada pesan.</p>
+            </div>
+        </section>
+
         <!-- PENGATURAN -->
         <section id="pengaturan" class="panel">
             <h1>Pengaturan</h1>
@@ -960,8 +1146,8 @@ body{
                 <h3>Ubah Password</h3>
                 <label>Password Lama</label>
                 <input type="password" id="oldPassword">
-                <label>Password Baru (min. 4 karakter)</label>
-                <input type="password" id="newPassword">
+                <label>Password Baru (min. 8 karakter)</label>
+                <input type="password" id="newPassword" minlength="8" placeholder="Minimal 8 karakter">
                 <div class="form-actions">
                     <button class="btn-primary" id="changePasswordBtn" style="width:auto;">Ubah Password</button>
                 </div>
@@ -1004,6 +1190,18 @@ let data = { profile:{}, skills:[], projects:[], certificates:[], experience:[],
 /* ==========================
    TOAST NOTIFIKASI
 ========================== */
+
+/* Escape teks sebelum dimasukkan ke innerHTML.
+   Mencegah injeksi skrip (XSS) bila ada data
+   yang tidak sengaja mengandung tag HTML. */
+function esc(v){
+    return String(v == null ? "" : v)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+}
 
 function toast(message, isError){
 
@@ -1093,6 +1291,37 @@ async function refreshData(){
 }
 
 /* ==========================
+   THEME DARK MODE ADMIN
+========================== */
+
+function applyAdminTheme(isDark){
+    document.body.classList.toggle("admin-dark", isDark);
+    const iconClass = isDark ? "fa-sun" : "fa-moon";
+    const sideThemeIcon = document.querySelector("#sideThemeBtn i");
+    const mobileThemeIcon = document.querySelector("#mobileThemeBtn i");
+    if(sideThemeIcon) sideThemeIcon.className = `fas ${iconClass}`;
+    if(mobileThemeIcon) mobileThemeIcon.className = `fas ${iconClass}`;
+}
+
+/* Inisialisasi tema saat load */
+(function initTheme(){
+    const saved = localStorage.getItem("admin-theme-dark") === "1";
+    applyAdminTheme(saved);
+})();
+
+document.getElementById("sideThemeBtn")?.addEventListener("click", ()=>{
+    const isDark = !document.body.classList.contains("admin-dark");
+    localStorage.setItem("admin-theme-dark", isDark ? "1" : "0");
+    applyAdminTheme(isDark);
+});
+
+document.getElementById("mobileThemeBtn")?.addEventListener("click", ()=>{
+    const isDark = !document.body.classList.contains("admin-dark");
+    localStorage.setItem("admin-theme-dark", isDark ? "1" : "0");
+    applyAdminTheme(isDark);
+});
+
+/* ==========================
    LOGIN / LOGOUT
 ========================== */
 
@@ -1109,6 +1338,8 @@ async function showApp(){
     try{
         await refreshData();
         renderAll();
+        loadInbox();
+        loadStats();
     }catch(err){
         toast(err.message, true);
     }
@@ -1221,7 +1452,13 @@ navItems.forEach(item=>{
 
         /* HP: tutup laci menu & tampilkan judul halaman di app bar */
         setNavOpen(false);
-        if(mobilePageTitle) mobilePageTitle.textContent = item.textContent.trim();
+        if(mobilePageTitle){
+            /* Ambil teks label saja (buang angka badge) */
+            const label = Array.from(item.childNodes)
+                .filter(n=> n.nodeType === Node.TEXT_NODE)
+                .map(n=> n.textContent).join("").trim();
+            mobilePageTitle.textContent = label || item.textContent.trim();
+        }
         if(isMobile()) window.scrollTo({ top:0, behavior:"smooth" });
 
     });
@@ -1296,9 +1533,35 @@ function renderDashboard(){
         <div class="stat-card"><i class="fas fa-diagram-project"></i><div><h3>${data.projects.length}</h3><p>Project</p></div></div>
         <div class="stat-card"><i class="fas fa-award"></i><div><h3>${data.certificates.length}</h3><p>Sertifikat</p></div></div>
         <div class="stat-card"><i class="fas fa-briefcase"></i><div><h3>${data.experience.length}</h3><p>Pengalaman</p></div></div>
-        <div class="stat-card wide"><i class="fas fa-database"></i><div><h3>SQLite (portfolio.db)</h3><p>Sumber Data</p></div></div>
+        <div class="stat-card"><i class="fas fa-eye"></i><div><h3 id="statToday">-</h3><p>Kunjungan Hari Ini</p></div></div>
+        <div class="stat-card"><i class="fas fa-chart-line"></i><div><h3 id="statTotal">-</h3><p>Total Kunjungan</p></div></div>
+        <div class="stat-card"><i class="fas fa-inbox"></i><div><h3 id="statUnread">-</h3><p>Pesan Belum Dibaca</p></div></div>
+        <div class="stat-card wide"><i class="fas fa-database"></i><div><h3>Supabase (PostgreSQL)</h3><p>Sumber Data</p></div></div>
     `;
 
+    if(lastStats) fillStats(lastStats);
+
+}
+
+/* Statistik kunjungan & pesan dari /api/stats */
+let lastStats = null;
+
+async function loadStats(){
+
+    try{
+        lastStats = await apiFetch("/api/stats");
+        fillStats(lastStats);
+    }catch(err){
+        console.warn("Statistik tidak tersedia:", err.message);
+    }
+
+}
+
+function fillStats(s){
+    const set = (id, v)=>{ const el = document.getElementById(id); if(el) el.textContent = v; };
+    set("statToday", s.todayVisits);
+    set("statTotal", s.totalVisits);
+    set("statUnread", s.unreadMessages);
 }
 
 /* ==========================
@@ -1382,16 +1645,17 @@ function renderSkillList(){
 
         card.innerHTML = `
             <div class="list-item-head">
-                <i class="${s.icon}"></i>
+                <i class="${esc(s.icon)}"></i>
                 <div>
-                    <h4>${s.name}</h4>
-                    <span class="tag">${s.badge}</span>
+                    <h4>${esc(s.name)}</h4>
+                    <span class="tag">${esc(s.badge)}</span>
                 </div>
             </div>
-            <p>${s.desc}</p>
-            <div class="mini-progress"><div style="width:${s.percent}%"></div></div>
+            <p>${esc(s.desc)}</p>
+            <div class="mini-progress"><div style="width:${esc(s.percent)}%"></div></div>
             <div class="list-item-actions">
                 <button class="icon-btn" data-edit="${s.id}"><i class="fas fa-pen"></i></button>
+                <button class="icon-btn" data-duplicate="${s.id}"><i class="fas fa-copy"></i></button>
                 <button class="icon-btn danger" data-delete="${s.id}"><i class="fas fa-trash"></i></button>
             </div>
         `;
@@ -1400,8 +1664,39 @@ function renderSkillList(){
 
     });
 
+    function applySkillSearch(){
+        const q = (document.getElementById("skillSearchInput")?.value || "").trim().toLowerCase();
+        skillList.querySelectorAll(".list-item").forEach(card=>{
+            const title = (card.querySelector("h4")?.textContent || "").toLowerCase();
+            const desc = (card.querySelector("p")?.textContent || "").toLowerCase();
+            card.style.display = (!q || title.includes(q) || desc.includes(q)) ? "" : "none";
+        });
+        const countEl = document.getElementById("skillCount");
+        if(countEl) countEl.textContent = `${skillList.querySelectorAll(".list-item").length} item`;
+    }
+
+    document.getElementById("skillSearchInput")?.addEventListener("input", applySkillSearch);
+    applySkillSearch();
+
     skillList.querySelectorAll("[data-edit]").forEach(btn=>{
         btn.addEventListener("click", ()=> openSkillForm(parseInt(btn.dataset.edit)));
+    });
+
+    skillList.querySelectorAll("[data-duplicate]").forEach(btn=>{
+        btn.addEventListener("click", async ()=>{
+            const id = parseInt(btn.dataset.duplicate);
+            const src = data.skills.find(x=>x.id === id);
+            if(!src) return;
+            try{
+                await apiFetch("/api/skills", { method: "POST", body: JSON.stringify({ ...src, id: null, name: src.name + " (copy)" }) });
+                await refreshData();
+                renderSkillList();
+                renderDashboard();
+                toast("Skill diduplikasi.");
+            }catch(err){
+                toast(err.message, true);
+            }
+        });
     });
 
     skillList.querySelectorAll("[data-delete]").forEach(btn=>{
@@ -1499,11 +1794,12 @@ function renderProjectList(){
         card.className = "list-item";
 
         card.innerHTML = `
-            <img src="${p.img}" alt="" onerror="this.style.display='none'">
-            <h4>${p.title}</h4>
-            <p>${p.desc}</p>
+            <img src="${esc(p.img)}" alt="" onerror="this.style.display='none'">
+            <h4>${esc(p.title)}</h4>
+            <p>${esc(p.desc)}</p>
             <div class="list-item-actions">
                 <button class="icon-btn" data-edit="${p.id}"><i class="fas fa-pen"></i></button>
+                <button class="icon-btn" data-duplicate="${p.id}"><i class="fas fa-copy"></i></button>
                 <button class="icon-btn danger" data-delete="${p.id}"><i class="fas fa-trash"></i></button>
             </div>
         `;
@@ -1512,8 +1808,39 @@ function renderProjectList(){
 
     });
 
+    function applyProjectSearch(){
+        const q = (document.getElementById("projectSearchInput")?.value || "").trim().toLowerCase();
+        projectList.querySelectorAll(".list-item").forEach(card=>{
+            const title = (card.querySelector("h4")?.textContent || "").toLowerCase();
+            const desc = (card.querySelector("p")?.textContent || "").toLowerCase();
+            card.style.display = (!q || title.includes(q) || desc.includes(q)) ? "" : "none";
+        });
+        const countEl = document.getElementById("projectCount");
+        if(countEl) countEl.textContent = `${projectList.querySelectorAll(".list-item").length} item`;
+    }
+
+    document.getElementById("projectSearchInput")?.addEventListener("input", applyProjectSearch);
+    applyProjectSearch();
+
     projectList.querySelectorAll("[data-edit]").forEach(btn=>{
         btn.addEventListener("click", ()=> openProjectForm(parseInt(btn.dataset.edit)));
+    });
+
+    projectList.querySelectorAll("[data-duplicate]").forEach(btn=>{
+        btn.addEventListener("click", async ()=>{
+            const id = parseInt(btn.dataset.duplicate);
+            const src = data.projects.find(x=>x.id === id);
+            if(!src) return;
+            try{
+                await apiFetch("/api/projects", { method: "POST", body: JSON.stringify({ ...src, id: null, title: src.title + " (copy)" }) });
+                await refreshData();
+                renderProjectList();
+                renderDashboard();
+                toast("Project diduplikasi.");
+            }catch(err){
+                toast(err.message, true);
+            }
+        });
     });
 
     projectList.querySelectorAll("[data-delete]").forEach(btn=>{
@@ -1633,11 +1960,12 @@ function renderCertList(){
         card.className = "list-item";
 
         card.innerHTML = `
-            <img src="${c.img}" alt="" onerror="this.style.display='none'">
-            <h4>${c.title}</h4>
-            <p>${c.desc}</p>
+            <img src="${esc(c.img)}" alt="" onerror="this.style.display='none'">
+            <h4>${esc(c.title)}</h4>
+            <p>${esc(c.desc)}</p>
             <div class="list-item-actions">
                 <button class="icon-btn" data-edit="${c.id}"><i class="fas fa-pen"></i></button>
+                <button class="icon-btn" data-duplicate="${c.id}"><i class="fas fa-copy"></i></button>
                 <button class="icon-btn danger" data-delete="${c.id}"><i class="fas fa-trash"></i></button>
             </div>
         `;
@@ -1646,8 +1974,39 @@ function renderCertList(){
 
     });
 
+    function applyCertSearch(){
+        const q = (document.getElementById("certSearchInput")?.value || "").trim().toLowerCase();
+        certList.querySelectorAll(".list-item").forEach(card=>{
+            const title = (card.querySelector("h4")?.textContent || "").toLowerCase();
+            const desc = (card.querySelector("p")?.textContent || "").toLowerCase();
+            card.style.display = (!q || title.includes(q) || desc.includes(q)) ? "" : "none";
+        });
+        const countEl = document.getElementById("certCount");
+        if(countEl) countEl.textContent = `${certList.querySelectorAll(".list-item").length} item`;
+    }
+
+    document.getElementById("certSearchInput")?.addEventListener("input", applyCertSearch);
+    applyCertSearch();
+
     certList.querySelectorAll("[data-edit]").forEach(btn=>{
         btn.addEventListener("click", ()=> openCertForm(parseInt(btn.dataset.edit)));
+    });
+
+    certList.querySelectorAll("[data-duplicate]").forEach(btn=>{
+        btn.addEventListener("click", async ()=>{
+            const id = parseInt(btn.dataset.duplicate);
+            const src = data.certificates.find(x=>x.id === id);
+            if(!src) return;
+            try{
+                await apiFetch("/api/certificates", { method: "POST", body: JSON.stringify({ ...src, id: null, title: src.title + " (copy)" }) });
+                await refreshData();
+                renderCertList();
+                renderDashboard();
+                toast("Sertifikat diduplikasi.");
+            }catch(err){
+                toast(err.message, true);
+            }
+        });
     });
 
     certList.querySelectorAll("[data-delete]").forEach(btn=>{
@@ -1764,15 +2123,16 @@ function renderExpList(){
 
         card.innerHTML = `
             <div class="list-item-head">
-                <i class="${x.icon}"></i>
+                <i class="${esc(x.icon)}"></i>
                 <div>
-                    <h4>${x.title}</h4>
-                    <span class="tag">${x.year}</span>
+                    <h4>${esc(x.title)}</h4>
+                    <span class="tag">${esc(x.year)}</span>
                 </div>
             </div>
-            <p><strong>${x.org}</strong><br>${x.desc}</p>
+            <p><strong>${esc(x.org)}</strong><br>${esc(x.desc)}</p>
             <div class="list-item-actions">
                 <button class="icon-btn" data-edit="${x.id}"><i class="fas fa-pen"></i></button>
+                <button class="icon-btn" data-duplicate="${x.id}"><i class="fas fa-copy"></i></button>
                 <button class="icon-btn danger" data-delete="${x.id}"><i class="fas fa-trash"></i></button>
             </div>
         `;
@@ -1781,8 +2141,40 @@ function renderExpList(){
 
     });
 
+    function applyExpSearch(){
+        const q = (document.getElementById("expSearchInput")?.value || "").trim().toLowerCase();
+        expList.querySelectorAll(".list-item").forEach(card=>{
+            const title = (card.querySelector("h4")?.textContent || "").toLowerCase();
+            const org = (card.querySelector("strong")?.textContent || "").toLowerCase();
+            const desc = (card.querySelector("p")?.textContent || "").toLowerCase();
+            card.style.display = (!q || title.includes(q) || org.includes(q) || desc.includes(q)) ? "" : "none";
+        });
+        const countEl = document.getElementById("expCount");
+        if(countEl) countEl.textContent = `${expList.querySelectorAll(".list-item").length} item`;
+    }
+
+    document.getElementById("expSearchInput")?.addEventListener("input", applyExpSearch);
+    applyExpSearch();
+
     expList.querySelectorAll("[data-edit]").forEach(btn=>{
         btn.addEventListener("click", ()=> openExpForm(parseInt(btn.dataset.edit)));
+    });
+
+    expList.querySelectorAll("[data-duplicate]").forEach(btn=>{
+        btn.addEventListener("click", async ()=>{
+            const id = parseInt(btn.dataset.duplicate);
+            const src = data.experience.find(i=>i.id === id);
+            if(!src) return;
+            try{
+                await apiFetch("/api/experience", { method: "POST", body: JSON.stringify({ ...src, id: null, title: src.title + " (copy)" }) });
+                await refreshData();
+                renderExpList();
+                renderDashboard();
+                toast("Pengalaman diduplikasi.");
+            }catch(err){
+                toast(err.message, true);
+            }
+        });
     });
 
     expList.querySelectorAll("[data-delete]").forEach(btn=>{
@@ -1899,6 +2291,109 @@ contactForm.addEventListener("submit", async (e)=>{
     }
 
 });
+
+/* ==========================
+   PESAN MASUK (INBOX)
+========================== */
+
+const msgListEl = document.getElementById("msgList");
+let inboxCache = [];
+
+function fmtWaktu(iso){
+    if(!iso) return "-";
+    const d = new Date(iso);
+    if(Number.isNaN(d.getTime())) return "-";
+    return d.toLocaleString("id-ID", { day:"2-digit", month:"short", year:"numeric", hour:"2-digit", minute:"2-digit" });
+}
+
+function renderMsgList(){
+
+    const q = (document.getElementById("msgSearchInput").value || "").trim().toLowerCase();
+    const rows = inboxCache.filter(m=>{
+        if(!q) return true;
+        return [m.name, m.email, m.message].some(v=> String(v || "").toLowerCase().includes(q));
+    });
+
+    document.getElementById("msgCount").textContent = `${rows.length} pesan`;
+
+    if(!rows.length){
+        msgListEl.innerHTML = `<p class="panel-sub">Belum ada pesan${q ? " yang cocok" : ""}.</p>`;
+        return;
+    }
+
+    msgListEl.innerHTML = rows.map(m=>`
+        <article class="msg-item${m.is_read ? "" : " unread"}" data-id="${m.id}">
+            <header class="msg-head">
+                <div>
+                    <h4>${esc(m.name)} ${m.is_read ? "" : '<span class="tag">Baru</span>'}</h4>
+                    <a class="msg-mail" href="mailto:${esc(m.email)}">${esc(m.email)}</a>
+                </div>
+                <time>${fmtWaktu(m.created_at)}</time>
+            </header>
+            <p class="msg-body">${esc(m.message)}</p>
+            <footer class="msg-actions">
+                <button class="icon-btn" data-msg-read="${m.id}" title="Tandai sudah dibaca"><i class="fas fa-check"></i></button>
+                <a class="icon-btn" href="mailto:${esc(m.email)}?subject=${encodeURIComponent("Re: pesan dari " + m.name)}" title="Balas via email"><i class="fas fa-reply"></i></a>
+                <button class="icon-btn danger" data-msg-del="${m.id}" title="Hapus"><i class="fas fa-trash"></i></button>
+            </footer>
+        </article>
+    `).join("");
+
+    msgListEl.querySelectorAll("[data-msg-read]").forEach(btn=>{
+        btn.addEventListener("click", async ()=>{
+            try{
+                await apiFetch(`/api/messages/${btn.dataset.msgRead}/read`, { method: "PUT" });
+                const m = inboxCache.find(x=> String(x.id) === btn.dataset.msgRead);
+                if(m) m.is_read = true;
+                renderMsgList();
+                updateMsgBadge();
+                toast("Pesan ditandai sudah dibaca.");
+            }catch(err){ toast(err.message, true); }
+        });
+    });
+
+    msgListEl.querySelectorAll("[data-msg-del]").forEach(btn=>{
+        btn.addEventListener("click", async ()=>{
+            if(!confirm("Hapus pesan ini?")) return;
+            try{
+                await apiFetch(`/api/messages/${btn.dataset.msgDel}`, { method: "DELETE" });
+                inboxCache = inboxCache.filter(x=> String(x.id) !== btn.dataset.msgDel);
+                renderMsgList();
+                updateMsgBadge();
+                toast("Pesan dihapus.");
+            }catch(err){ toast(err.message, true); }
+        });
+    });
+
+}
+
+function updateMsgBadge(){
+
+    const unread = inboxCache.filter(m=> !m.is_read).length;
+    const badge = document.getElementById("pesanBadge");
+
+    badge.textContent = unread;
+    badge.classList.toggle("hidden", unread === 0);
+
+}
+
+async function loadInbox(){
+
+    try{
+        inboxCache = await apiFetch("/api/messages");
+        renderMsgList();
+        updateMsgBadge();
+    }catch(err){
+        toast(err.message, true);
+    }
+
+}
+
+document.getElementById("msgSearchInput").addEventListener("input", renderMsgList);
+document.getElementById("refreshMsgBtn").addEventListener("click", loadInbox);
+
+/* Muat inbox juga saat panel Pesan dibuka */
+document.querySelector('[data-target="pesan"]').addEventListener("click", loadInbox);
 
 /* ==========================
    PENGATURAN
