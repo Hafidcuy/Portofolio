@@ -62,6 +62,10 @@ app.use((req, res, next) => {
     next();
 });
 
+/* Parser body JSON dipasang paling awal agar semua route
+   (termasuk /api/messages) menerima req.body yang sudah diparse. */
+app.use(express.json());
+
 /* Middleware untuk mencatat kunjungan halaman portfolio (di-index.html & /api/portfolio). */
 app.use((req, res, next) => {
     if(req.path === "/api/portfolio"){
@@ -180,8 +184,6 @@ app.get("/api/admin-log", requireAuth, async (req, res)=>{
 app.get("/api/health", (req, res) => {
     res.json({ ok: true, time: new Date().toISOString() });
 });
-
-app.use(express.json());
 
 /* Di Vercel, file statis (public/**) sudah otomatis disajikan
    oleh platform-nya sendiri. express.static() di sini hanya
